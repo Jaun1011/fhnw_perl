@@ -2,27 +2,16 @@ use v5.36;
 use strict;
 use warnings;
 
-use lib 'src';
+use lib 'lib';
 
-use Parser;
-
-
-use Data::Dumper;
-
-sub read_file($filename){
-    open(FH, '<', $filename) or die $!;
-
-    my $content = "";
-
-    while(<FH>){
-        $content .= $_; 
-    }
-    
-	return $content;
-}
+use Multi::Parser;
+use Multi::Converter;
+use Multi::File;
 
 sub main(){
-    my %tokens = Parser::tokenize(read_file "res/SampleEntranceExams/FHNW_Perl_Class/0_ENTRANCE_EXAM_MASTER_");
+    my $content = Multi::File::read_file("res/SampleEntranceExams/FHNW_Perl_Class/0_ENTRANCE_EXAM_MASTER_"); 
+	my %tokens  = Multi::Parser::parse($content);
+	Converter::convert(%tokens);
 }
 
 main();

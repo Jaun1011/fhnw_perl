@@ -1,34 +1,41 @@
-package Parser;
+package Multi::Parser;
 
 use v5.36;
 use strict;
 use warnings;
+use Data::Dumper;
 
 
 sub _id($text){
-    if ($text =~ /\b(\d+)\b/) {
+	my $PATTERN_ID = qr(\b(\d+)\b);
+
+    if ($text =~ $PATTERN_ID) {
     	return $1; 
     }
 
-	return "undefined";
+	die "no id defined in $text";
 }
-
 
 sub _question($text){
-    if ($text =~ /\d\.(.+?)\[/s) {
+	my $PATTERN_QUESTION = qr(\d\.(.+?)\[)s;
+
+    if ($text =~ $PATTERN_QUESTION) {
     	return $1; 
     }
 
-	die "no question anwer defined";
+	die "no question defined  in text $text";
 }
 
-
 sub _ansers($text){
+
+	my $PATTERN_CHECKBOX        = qr(\[( |X|x)\] /);
+	my $PATTERN_CHECKBOX_ANSWER = qr(\[(X|x\]));
+
     my @answers = map {
-		my $result =  length ($_ =~ /\[(X|x\])/);
+		my $result =  length ($_ =~ $PATTERN_CHECKBOX_ANSWER);
 		my $text   = $_;
 
-		$text =~ s/\[( |X|x)\] //;
+		$text =~ $PATTERN_CHECKBOX;
 
 	    return (
 			answer => $text,
@@ -47,7 +54,6 @@ sub _questions($text){
 	my $question = _question $text;
  	my @answers  = _ansers   $text;
 
-
     return (
    		id       => $id,
 		question => $question,
@@ -56,18 +62,23 @@ sub _questions($text){
 }
 
 sub _metainfo($value, $keyword){		
+	
+	my $PATTERN_META = qr($keyword:\s*\[(?<info>.*)\]);
 
-	if ($value =~ /$keyword:\s*\[(.*)\]/) {
-		return $1;
+	if ($value =~ $PATTERN_META) {
+		return $+{info};
 	}
 
 	die "no metadata info with $keyword";
 }
 
-sub tokenize($content){
+sub parse($content){
+	my $PATTERN_SPLITTER = qr(\n_+\n)s;
 
-    my @parts     = split /_{4,100}\n/, $content;
+    my @parts     = split $PATTERN_SPLITTER, $content;
     my $preambel  = $parts[0];
+
+
     my @questions = [];
 
     for my $idx (1..$#parts) {
