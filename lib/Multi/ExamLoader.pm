@@ -57,7 +57,7 @@ my $EXAM_FILE = qr{
 
 
     <token: answer>
-        <checkbox> \h* <text> \h*
+        ^\h* <checkbox> \h* <text> \h*\n
 
     <token: text>
         (.*?)

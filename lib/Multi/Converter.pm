@@ -27,15 +27,20 @@ sub question($question){
 }
 
 sub answer($answer){
-	return "\t$answer->{checkbox} $answer->{text}"; 
+	return "\t[ ] $answer->{text}\n"; 
 }
 
 
 sub question_answers($question_answers){
+
+	show ($question_answers);
+
+	my $ansers = join "", map { answer($_) } (@{$question_answers->{answer}});
+
 	my $result  
 		= question($question_answers->{question}) 
 		. "\n" 
-		. (join "", map { answer($_) } (@{$question_answers->{answer}}))
+		. $ansers
 		. "\n" 
 		. $question_answers->{separator};
 
@@ -45,9 +50,7 @@ sub question_answers($question_answers){
 
 sub questions($question_answers){
 	my $result = join "", map { question_answers $_ } @{$question_answers};
-
 	return $result;
-	
 }
 
 sub toFileContent($exam){

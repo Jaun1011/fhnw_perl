@@ -16,15 +16,26 @@ sub main(){
 
 
 	my $path   = "./t/res/basic_test_exam";
-	my $target = "res/". strftime("%Y%m%d%H%M%S", localtime()) . "_jku";  
 
+	my $seed = int(rand(10000));
+
+	my $time = strftime("%Y%m%d%H%M%S", localtime()); 
+	my $file = $time. "_" .$seed. "_jku";
+	
+	my $target = "res/". $file;
+
+	say $file;
+
+	say strftime("%Y%m%d%H%M%S", localtime()); 
 
 	my $content  = Multi::File::read($path);
 	my $exam     = Multi::ExamLoader::load_exam($content);
-	my $shuffled = Multi::Analysis::shuffleAnswers($target,$exam);
+	my $shuffled = Multi::Analysis::shuffleAnswers($seed, $exam);
 	
 	my $result = Multi::Converter::toFileContent($exam);
 	Multi::File::write($result, $target);
+	
+	say strftime("%Y%m%d%H%M%S", localtime()); 
 }
 
 main();
