@@ -1,17 +1,25 @@
 use v5.36;
 use strict;
 use warnings;
-
 use lib 'lib';
 
-use Multi::Parser;
-use Multi::Converter;
 use Multi::File;
+use Multi::ExamLoader;
+use Multi::Converter;
+
+use Data::Show;
 
 sub main(){
-    my $content = Multi::File::read_file("res/SampleEntranceExams/FHNW_Perl_Class/0_ENTRANCE_EXAM_MASTER_"); 
-	my %tokens  = Multi::Parser::parse($content);
-	Converter::convert(%tokens);
+
+
+	my $path = "./t/res/basic_test_exam";
+	my $content = Multi::File::read($path);
+
+	my $exam   = Multi::ExamLoader::load_exam($content);
+	my $result = Multi::Converter::toFileContent($exam);
+	Multi::File::write($result, "./test");
+
+
 }
 
 main();
