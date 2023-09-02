@@ -16,8 +16,9 @@ use Multi::File;
 my $path = "./t/res/basic_test_exam";
 my $exam = do "$path.pl";
 
-my $expected = Multi::File::read($path);
-my $result = Multi::Converter::toString($exam);
+my $expected = Multi::File::read($path. "_converted");
+my $result   = Multi::Converter::toFileContent($exam);
 
-#is $expected, $result;
+
+is $expected, $result;
 done_testing();

@@ -32,15 +32,11 @@ sub answer($answer){
 
 
 sub question_answers($question_answers){
-
-
- 
 	my $result  
 		= question($question_answers->{question}) 
 		. "\n" 
 		. (join "", map { answer($_) } (@{$question_answers->{answer}}))
 		. "\n" 
-
 		. $question_answers->{separator};
 
 
