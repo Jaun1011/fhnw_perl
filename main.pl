@@ -2,7 +2,6 @@ use v5.36;
 use strict;
 use warnings;
 
-use POSIX qw(strftime);
 
 use lib 'src';
 use File;
@@ -13,22 +12,22 @@ use Analysis;
 use Data::Show;
 
 
-sub argumens(@argv){
+sub arguments(@argv){
 
 
-	my $argumens = {
+	my $arguments = {
 		command =>  shift @argv,
 	};
 
 	for (my $i = 0; $i < @argv; $i += 2) {
-		my $key 	      = @argv[$i];
-		my $value 		  = @argv[$i + 1];
- 		$key 			  =~ s/-{1,2}//;
+		my $key	  = $argv[$i];
+		my $value = $argv[$i + 1];
 
-		$argumens->{$key} = $value;
+ 		$key 	  =~ s/-{1,2}//;
+		$arguments->{$key} = $value;
 	}
 
-	return $argumens;
+	return $arguments;
 }
 
 
@@ -40,21 +39,19 @@ sub load_exam($path){
 }
 
 
+sub generate_exam($arguments){
 
+	my $seed = int(rand(1000000));
 
-sub generate_exam($argumens){
-
-
-
-	my $seed   = int(rand(10000));
-	my $time = strftime("%Y%m%d%H%M%S", localtime()); 
-	my $file = $time. "_" .$seed . $argumens->{name};
-
-	my $target = $argumens->{target}. $file;
+	my $target = File::generate_filename(
+		$arguments->{target},
+		$arguments->{name},
+		$seed
+	);
 
 
 
-	my $exam = load_exam($argumens->{master});
+	my $exam = load_exam($arguments->{master});
 
 	show($exam);
 	Analysis::shuffleAnswers($seed, $exam);
@@ -63,19 +60,44 @@ sub generate_exam($argumens){
 	File::write($result, $target);
 }
 
+sub compare_exam($arguments){
+	my $student_file = $arguments->{target};
+
+	my $student_exam = load_exam($student_file);
+	my $master_exam  = load_exam($arguments->{master});
+
+	my $seed = File::extract_seed($student_file);
+	
+	Analysis::check_exam($master_exam, $student_exam, $seed);
+	
+
+}
+
+
+
+
 
 sub main(){
 
-	my $argumens = argumens(@ARGV);
+	my $arguments = arguments(@ARGV);
 
 
 
-	if("generate" eq $argumens->{command}){
+	if ("generate" eq $arguments->{command}){
 		say "> start generating..";
-		generate_exam($argumens);
+		generate_exam($arguments);
 		return;
 	}
 
+
+	if ("compare" eq $arguments->{command}){
+		say "> start check...";
+		compare_exam($arguments);
+
+
+		
+		return;
+	}
 
 
 

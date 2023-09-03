@@ -25,307 +25,277 @@ WARNING: Each question has only one correct answer.
          If two or more boxes are marked with an 'X',
          the answer will be scored as zero.
 ________________________________________________________________________________
-1.  The static type of a Perl variable is determined by:
+1. The static type of a Perl variable is determined by:
 
-	[ ] The compile-time type declarator of the variable
 	[ ] The type of the first value placed in the variable
-	[ ] Random chance
+	[ ] The compile-time type declarator of the variable
 	[ ] Nothing: Perl variables don't have a static type
+	[ ] Random chance
 	[ ] The name of the variable
 
-
 ________________________________________________________________________________
-2.  Perl's three main types of call context (or "amount context") are:
+2. Perl's three main types of call context (or "amount context") are:
 
-	[ ] List, scalar, and void
-	[ ] List, linear, and void
 	[ ] Null, scalar, and void
-	[ ] Blood, sweat, and tears
+	[ ] List, linear, and void
+	[ ] List, scalar, and void
 	[ ] List, scalar, and null
-
+	[ ] Blood, sweat, and tears
 
 ________________________________________________________________________________
-3.  The "default variable" (or "topic variable") is:
+3. The "default variable" (or "topic variable") is:
 
-	[ ] $_
 	[ ] @_
-	[ ] The last variable that was successfully assigned to
 	[ ] $$
+	[ ] $_
+	[ ] The last variable that was successfully assigned to
 	[ ] $=
 
-
 ________________________________________________________________________________
-4.  You can access the command-line arguments of a Perl program via:
+4. You can access the command-line arguments of a Perl program via:
 
+	[ ] @_
+	[ ] @ARGV
 	[ ] @ARG
 	[ ] @ARGS
-	[ ] @ARGV
 	[ ] $ARGV
-	[ ] @_
-
 
 ________________________________________________________________________________
-5.  The main repository for Open Source Perl modules is:
+5. The main repository for Open Source Perl modules is:
 
-	[ ] CPAN
-	[ ] Github
+	[ ] www.perl.org
 	[ ] CSPAN
 	[ ] Perlhub
-	[ ] www.perl.org
-
+	[ ] CPAN
+	[ ] Github
 
 ________________________________________________________________________________
-6.  The three standard sigils for variable declarations are:
+6. The three standard sigils for variable declarations are:
 
-	[ ] '$' for scalars, '@' for hashes, '%' for arrays
-	[ ] '$' for numeric, '@' for emails, '%' for percentages
-	[ ] '$' for scalars, '@' for consts, '%' for literals
 	[ ] '$' for lookups, '@' for reuses, '%' for declarations
+	[ ] '$' for scalars, '@' for hashes, '%' for arrays
 	[ ] '$' for scalars, '@' for arrays, '%' for hashes
-
+	[ ] '$' for scalars, '@' for consts, '%' for literals
+	[ ] '$' for numeric, '@' for emails, '%' for percentages
 
 ________________________________________________________________________________
-7.  The difference between a 'my' variable and an 'our' variable is:
+7. The difference between a 'my' variable and an 'our' variable is:
 
-	[ ] 'my' variables are assignable;        'our' variables are constants
 	[ ] 'my' variables must be scalars;       'our' variables must be arrays or hashes
-	[ ] 'my' variables are lexically scoped;  'our' variables are package scoped
 	[ ] 'my' variables are compile-time;      'our' variables are run-time
 	[ ] 'my' variables are subroutine scoped; 'our' variables are block scoped
-
+	[ ] 'my' variables are assignable;        'our' variables are constants
+	[ ] 'my' variables are lexically scoped;  'our' variables are package scoped
 
 ________________________________________________________________________________
-8.  A single-quoted string (such as: 'I will achieve 100% on this exam')...
+8. A single-quoted string (such as: 'I will achieve 100% on this exam')...
 
-	[ ] ...does not interpolate variables or backslashed escape sequences
-	[ ] ...converts its contents to ASCII, even if they are Unicode characters
-	[ ] ...only interpolates backslashed escape sequences, but not variables
 	[ ] ...only interpolates variables, but not backslashed escape sequences
+	[ ] ...converts its contents to ASCII, even if they are Unicode characters
+	[ ] ...does not interpolate variables or backslashed escape sequences
+	[ ] ...only interpolates backslashed escape sequences, but not variables
 	[ ] ...interpolates both variables and backslashed escape sequences
 
-
 ________________________________________________________________________________
-9.  The term qq{XXXXX} is...
+9. The term qq{XXXXX} is...
 
-	[ ] ...a call to the 'qq' function, passing it a block of code
-	[ ] ...another way of writing the single-quoted string: 'XXXXX'
-	[ ] ...another way of writing the double-quoted string: "XXXXX"
-	[ ] ...another way of writing the array of strings: ['X', 'X', 'X', 'X', 'X']
 	[ ] ...another way of writing the list of strings:  ('X', 'X', 'X', 'X', 'X')
-
+	[ ] ...another way of writing the array of strings: ['X', 'X', 'X', 'X', 'X']
+	[ ] ...another way of writing the single-quoted string: 'XXXXX'
+	[ ] ...a call to the 'qq' function, passing it a block of code
+	[ ] ...another way of writing the double-quoted string: "XXXXX"
 
 ________________________________________________________________________________
-10.  Which of the following is NOT a single valid Perl number?
+10. Which of the following is NOT a single valid Perl number?
 
 	[ ] 1042
 	[ ] 1_042
-	[ ] 1'042
-	[ ] 0b10000010010
 	[ ] 1.042e3
-
+	[ ] 0b10000010010
+	[ ] 1'042
 
 ________________________________________________________________________________
-11.  An array is...
+11. An array is...
 
-	[ ] A list with a predeclared fixed number of elements
-	[ ] A multidimensional list
-	[ ] Something that is always contained inside a list
-	[ ] A container for a list
 	[ ] Exactly the same thing as a list
-
+	[ ] A multidimensional list
+	[ ] A container for a list
+	[ ] A list with a predeclared fixed number of elements
+	[ ] Something that is always contained inside a list
 
 ________________________________________________________________________________
-12.  An 'if' statement requires curly brackets around the statements it controls...
+12. An 'if' statement requires curly brackets around the statements it controls...
 
+	[ ] ...only if it controls exactly one statement
 	[ ] ...only if it controls two or more statements
 	[ ] ...only if the statements it controls include a variable declaration
-	[ ] ...in all circumstances
-	[ ] ...only if it controls exactly one statement
 	[ ] ...never; the curly brackets are always optional in an 'if' statement
-
+	[ ] ...in all circumstances
 
 ________________________________________________________________________________
-13.  To specify a second alternative test after an 'if', the correct keyword is:
+13. To specify a second alternative test after an 'if', the correct keyword is:
 
-	[ ] elseif  (with no whitespace between the two words)
 	[ ] else if (with whitespace between the two words)
-	[ ] elif
 	[ ] ormaybe (with no whitespace between the two words)
 	[ ] elsif
-
+	[ ] elif
+	[ ] elseif  (with no whitespace between the two words)
 
 ________________________________________________________________________________
-14.  "Short-circuiting" of a boolean expression means...
+14. "Short-circuiting" of a boolean expression means...
 
-	[ ] ...Perl only evaluates each boolean expression once during the program
-	[ ] ...Perl will never execute an 'else' block
 	[ ] ...Perl evaluates as little as required to get a definite answer
-	[ ] ...Perl programs can cause CPUs to emit sparks if an expression is too complex
 	[ ] ...Perl defers evaluating the expression until the result is tested
-
+	[ ] ...Perl programs can cause CPUs to emit sparks if an expression is too complex
+	[ ] ...Perl will never execute an 'else' block
+	[ ] ...Perl only evaluates each boolean expression once during the program
 
 ________________________________________________________________________________
-15.  A "foreach-style" loop (such as: for (@list) {...}) will be iterated...
+15. A "foreach-style" loop (such as: for (@list) {...}) will be iterated...
 
-	[ ] ...once per element in the list in all circumstances
 	[ ] ...once per element in the list, unless a 'last' is executed in the block
-	[ ] ...an unknown number of times, until the list being iterated is empty
-	[ ] ...endlessly, until a 'last' is executed in the loop
 	[ ] ...never, because an array is not a list and cannot be iterated
-
+	[ ] ...once per element in the list in all circumstances
+	[ ] ...endlessly, until a 'last' is executed in the loop
+	[ ] ...an unknown number of times, until the list being iterated is empty
 
 ________________________________________________________________________________
-16.  The 'while' loop in Perl...
+16. The 'while' loop in Perl...
 
 	[ ] ...iterates until its condition is true at the start of an iteration
-	[ ] ...iterates until its condition is false at the start of an iteration
-	[ ] ...iterates until its condition becomes true anywhere within its block
-	[ ] ...doesn't exist; Perl does not have a 'while' loop
 	[ ] ...iterates until its condition becomes false anywhere within its block
-
+	[ ] ...iterates until its condition becomes true anywhere within its block
+	[ ] ...iterates until its condition is false at the start of an iteration
+	[ ] ...doesn't exist; Perl does not have a 'while' loop
 
 ________________________________________________________________________________
-17.  The keywords for the Perl switch statement are:
+17. The keywords for the Perl switch statement are:
 
+	[ ] 'switch' and 'case'    and 'else'
 	[ ] 'whence' and 'whither' and 'thither'
 	[ ] 'gather' and 'take'    and 'otherwise'
 	[ ] 'given'  and 'when'    and 'default'
-	[ ] 'switch' and 'case'    and 'else'
 	[ ] 'case'   and 'of'      and 'or'
 
-
 ________________________________________________________________________________
-18.  Which five Perl values are the only values that ever evaluate false?
+18. Which five Perl values are the only values that ever evaluate false?
 
-	[ ] False, Nil, Null, None, Empty
-	[ ] 0, '0', '', (), undef
-	[ ] 0, '0', '', (), []
 	[ ] 0, '0', 'false', 'False', 'FALSE'
 	[ ] 0, +0, -0, 0.0, -0.0
-
+	[ ] False, Nil, Null, None, Empty
+	[ ] 0, '0', '', (), []
+	[ ] 0, '0', '', (), undef
 
 ________________________________________________________________________________
-19.  If the array @x contains four elements,
+19. If the array @x contains four elements,
     how many elements will be in the list (1, @x, 2)?
 
-	[ ] Two:   because Perl ignores non-scalar variables in a list constructor
 	[ ] Eight: because 1 * 4 * 2 = 8
+	[ ] Two:   because Perl ignores non-scalar variables in a list constructor
+	[ ] Six:   because the four array elements will be flattened into the list
 	[ ] None:  because it won't compile; arrays can't be used in list constructors
 	[ ] Three: because the array will become a single element within the list
-	[ ] Six:   because the four array elements will be flattened into the list
-
 
 ________________________________________________________________________________
-20.  A hash variable stores...
+20. A hash variable stores...
 
-	[ ] Values of any scalar or list type, indexed by keys that are always strings
 	[ ] Values of any scalar type, indexed by keys that are always strings
 	[ ] Values that are always strings, indexed by keys of any type
-	[ ] Values that are unique, indexed by keys that may be repeated
+	[ ] Values of any scalar or list type, indexed by keys that are always strings
 	[ ] Random values, indexed by sequential keys of any type
-
+	[ ] Values that are unique, indexed by keys that may be repeated
 
 ________________________________________________________________________________
-21.  The expression 1 / 'Inf' produces the result:
+21. The expression 1 / 'Inf' produces the result:
 
+	[ ] 1 (as a convenience, to avoid subsequent division by zero)
 	[ ] A non-fatal warning (because 'Inf' is a string, not a number)
-	[ ] A fatal exception (because 'Inf' is a string, not a number)
 	[ ] 0 (because that's the correct mathematical outcome)
 	[ ] An infinite evaluation loop; the program will run forever
-	[ ] 1 (as a convenience, to avoid subsequent division by zero)
-
+	[ ] A fatal exception (because 'Inf' is a string, not a number)
 
 ________________________________________________________________________________
-22.  A "reference" in Perl is best described as:
+22. A "reference" in Perl is best described as:
 
-	[ ] A deep copy of an existing variable or value
-	[ ] A type-safe immutable pointer to an existing value or variable
 	[ ] An alias (i.e. another name) for an existing variable
+	[ ] A type-safe immutable pointer to an existing value or variable
+	[ ] A deep copy of an existing variable or value
 	[ ] A mutable pointer to a value or variable, without type-checking
 	[ ] A link to the documentation for an existing value or variable
 
-
 ________________________________________________________________________________
-23.  In Perl, you can take references to...
+23. In Perl, you can take references to...
 
-	[ ] ...only scalars (NOT to arrays, hashes, or subroutines)
-	[ ] ...arrays and hashes (i.e. containers), but NOT scalars or subroutines
 	[ ] ...scalars, arrays, and hashes, but NOT subroutines
-	[ ] ...scalars and arrays, but NOT hashes or subroutines
 	[ ] ...scalars, arrays, hashes, and subroutines
-
+	[ ] ...arrays and hashes (i.e. containers), but NOT scalars or subroutines
+	[ ] ...scalars and arrays, but NOT hashes or subroutines
+	[ ] ...only scalars (NOT to arrays, hashes, or subroutines)
 
 ________________________________________________________________________________
-24.  User-defined subroutines are declared with the keyword:
+24. User-defined subroutines are declared with the keyword:
 
 	[ ] 'fun'
 	[ ] Nothing: subroutines are not explicitly declared in Perl
+	[ ] 'do'
 	[ ] 'sub'
 	[ ] 'subroutine'
-	[ ] 'do'
-
 
 ________________________________________________________________________________
-25.  Which variable contains the argument with which a subroutine was called?
+25. Which variable contains the argument with which a subroutine was called?
 
-	[ ] $_
-	[ ] $ARGV
-	[ ] @_
-	[ ] @ARGS
 	[ ] @ARGV
-
+	[ ] @ARGS
+	[ ] $_
+	[ ] @_
+	[ ] $ARGV
 
 ________________________________________________________________________________
-26.  Which one of the following subroutine declarations correctly declares
+26. Which one of the following subroutine declarations correctly declares
     a subroutine that can must be called with at least two arguments
     but which may also be called with more than two arguments?
 
-	[ ] sub two_or_more (@flags, @data_set)      {...}
 	[ ] sub two_or_more ($flag, ...)             {...}
-	[ ] sub two_or_more ($flag, @data)           {...}
-	[ ] sub two_or_more ($flag, $data = @extras) {...}
 	[ ] sub two_or_more ($data, $flag)           {...}
-
+	[ ] sub two_or_more ($flag, $data = @extras) {...}
+	[ ] sub two_or_more ($flag, @data)           {...}
+	[ ] sub two_or_more (@flags, @data_set)      {...}
 
 ________________________________________________________________________________
-27.  If a user-defined subroutine does not contain a 'return' statement...
+27. If a user-defined subroutine does not contain a 'return' statement...
 
 	[ ] ...it will return the value the last expression it actually evaluates
-	[ ] ...it will never return and will continue to execute forever
-	[ ] ...it will return 'undef'
 	[ ] ...it will throw an exception after executing its final statement
+	[ ] ...it will never return and will continue to execute forever
 	[ ] ...it will return the value the final statement in its code block
-
+	[ ] ...it will return 'undef'
 
 ________________________________________________________________________________
-28.  The keyword to throw an exception in Perl is:
+28. The keyword to throw an exception in Perl is:
 
-	[ ] 'except'
 	[ ] 'throw'
-	[ ] 'exit'
 	[ ] 'die'
+	[ ] 'except'
 	[ ] 'raise'
-
+	[ ] 'exit'
 
 ________________________________________________________________________________
-29.  How can exceptions be caught and subsequently accessed in Perl?
+29. How can exceptions be caught and subsequently accessed in Perl?
 
-	[ ] Exceptions in Perl can't be caught or accessed after they're thrown
-	[ ] Caught in an 'eval' block'; accessed via the special $! variable
 	[ ] Caught in a 'catch' block;  accessed via an 'access' block
+	[ ] Caught in an 'eval' block'; accessed via the special $! variable
 	[ ] Caught in an 'eval' block;  accessed via the special $@ variable
+	[ ] Exceptions in Perl can't be caught or accessed after they're thrown
 	[ ] Caught in a 'try' block;    accessed via the builtin 'eval' function
 
-
 ________________________________________________________________________________
-30.  What is the purpose of the 'use strict' pragma?
+30. What is the purpose of the 'use strict' pragma?
 
 	[ ] It disallows undeclared variables, barewords, and symbolic references
 	[ ] It disallows package variables (all variables must be declared with 'my')
+	[ ] It reports all errors using verbose (and harshly worded) error messages
 	[ ] It prevents any construct that might also be valid C code
 	[ ] It converts all warnings to fatal errors
-	[ ] It reports all errors using verbose (and harshly worded) error messages
-
 
 ================================================================================
 END OF EXAM

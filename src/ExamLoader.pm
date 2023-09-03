@@ -69,7 +69,7 @@ my $EXAM_FILE = qr{
 
     <token: id>
         \d+
-
+        
 }xms;
 
 sub load_exam($file_contents) {
@@ -83,7 +83,7 @@ sub load_exam($file_contents) {
     }
     
 
-    say "[warning]\tfile did not match";
+    say "file did not match";
     return undef;    
 }
 

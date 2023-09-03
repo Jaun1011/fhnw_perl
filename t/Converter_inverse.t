@@ -33,17 +33,13 @@ my $exam = {
      ]
 };
 
-
 my $file = "key: [___]\nINSTRUCTION:\n___\n1. question\n\n\t[ ] a 1\n\t[ ] a 2\n\n___\nEND";
 my $content = Converter::toFileContent($exam);
 
-show($content);
-
-is ($file , $content);
+is $content, $file;
 
 my $inverse_exam = ExamLoader::load_exam($file);
-show($inverse_exam);
 
-is_deeply($inverse_exam, $exam);
+is_deeply($exam, $inverse_exam);
 
 done_testing();
