@@ -1,4 +1,4 @@
-package Multi::ExamLoader;
+package ExamLoader;
 
 use v5.36;
 use strict;
@@ -42,18 +42,20 @@ my $EXAM_FILE = qr{
         .*?
     
     <token: separator>
-        \n(_|=){1,}\n
+        (_|=){1,}
     
 
     <rule: question_answers>
         <question>
 
         <[answer]>+
+        \n+
         <separator>
+        \n+
 
 
     <token: question>
-        <id> [[:punct:]] <text>
+        <id> [[:punct:]] \h* <text>
 
 
     <token: answer>
@@ -70,15 +72,13 @@ my $EXAM_FILE = qr{
 
 }xms;
 
-sub load_exam ($file_contents) {
+sub load_exam($file_contents) {
 
-    say "[info]\tstart matching";
 
     # build a grammar to parse any exam file...
     # match the file contents against the grammar to automatically create a data structure...
     if ($file_contents =~ $EXAM_FILE) {
         # return that data structure...
-        say "[info]\tmatched file";
         return $/{exam};
     }
     

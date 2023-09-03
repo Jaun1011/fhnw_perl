@@ -1,4 +1,4 @@
-package Multi::Converter;
+package Converter;
 
 use v5.36;
 use strict;
@@ -6,6 +6,10 @@ use warnings;
 use Data::Dumper;
 use Data::Show;
 
+
+sub separator($separator){
+	return "\n$separator\n";
+}
 
 sub intro($intro){
 	
@@ -16,7 +20,7 @@ sub intro($intro){
 	}
 
 	$result .= $intro->{instructions};
-	$result .= $intro->{separator};
+	$result .= separator($intro->{separator});
 
 	return $result;
 }
@@ -33,16 +37,13 @@ sub answer($answer){
 
 sub question_answers($question_answers){
 
-	show ($question_answers);
-
 	my $ansers = join "", map { answer($_) } (@{$question_answers->{answer}});
 
 	my $result  
 		= question($question_answers->{question}) 
 		. "\n" 
 		. $ansers
-		. "\n" 
-		. $question_answers->{separator};
+		. separator($question_answers->{separator});
 
 
 	return $result;

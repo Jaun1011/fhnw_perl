@@ -1,6 +1,5 @@
-
-my $ref =   {
-      end => "END OF EXAM\n====\n",
+ {
+      end => "END OF EXAM\n================================================================================\n",
       intro => {
         identity_info => [
                            { key => "Student ID", value => "____________" },
@@ -15,16 +14,16 @@ my $ref =   {
           answer    => [
                          {
                            checkbox => "[X]",
-                           text => "Nothing: Perl variables don't have a static type\n",
+                           text => "Nothing: Perl variables don't have a static type",
                          },
-                         { checkbox => "[ ]", text => "The name of the variable\n" },
+                         { checkbox => "[ ]", text => "The name of the variable" },
                          {
                            checkbox => "[ ]",
-                           text => "The type of the first value placed in the variable\n",
+                           text => "The type of the first value placed in the variable",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "The compile-time type declarator of the variable\n",
+                           text => "The compile-time type declarator of the variable",
                          },
                          { checkbox => "[ ]", text => "Random chance" },
                        ],
@@ -36,10 +35,10 @@ my $ref =   {
         },
         {
           answer    => [
-                         { checkbox => "[X]", text => "List, scalar, and void\n" },
-                         { checkbox => "[ ]", text => "List, linear, and void\n" },
-                         { checkbox => "[ ]", text => "List, scalar, and null\n" },
-                         { checkbox => "[ ]", text => "Null, scalar, and void\n" },
+                         { checkbox => "[X]", text => "List, scalar, and void" },
+                         { checkbox => "[ ]", text => "List, linear, and void" },
+                         { checkbox => "[ ]", text => "List, scalar, and null" },
+                         { checkbox => "[ ]", text => "Null, scalar, and void" },
                          { checkbox => "[ ]", text => "Blood, sweat, and tears" },
                        ],
           question  => {
@@ -50,10 +49,10 @@ my $ref =   {
         },
         {
           answer    => [
-                         { checkbox => "[X]", text => "\$_\n" },
-                         { checkbox => "[ ]", text => "\@_\n" },
-                         { checkbox => "[ ]", text => "\$\$\n" },
-                         { checkbox => "[ ]", text => "\$=\n" },
+                         { checkbox => "[X]", text => "\$_" },
+                         { checkbox => "[ ]", text => "\@_" },
+                         { checkbox => "[ ]", text => "\$\$" },
+                         { checkbox => "[ ]", text => "\$=" },
                          {
                            checkbox => "[ ]",
                            text => "The last variable that was successfully assigned to",
@@ -67,10 +66,10 @@ my $ref =   {
         },
         {
           answer    => [
-                         { checkbox => "[X]", text => "\@ARGV\n" },
-                         { checkbox => "[ ]", text => "\$ARGV\n" },
-                         { checkbox => "[ ]", text => "\@ARGS\n" },
-                         { checkbox => "[ ]", text => "\@ARG\n" },
+                         { checkbox => "[X]", text => "\@ARGV" },
+                         { checkbox => "[ ]", text => "\$ARGV" },
+                         { checkbox => "[ ]", text => "\@ARGS" },
+                         { checkbox => "[ ]", text => "\@ARG" },
                          { checkbox => "[ ]", text => "\@_" },
                        ],
           question  => {
@@ -81,10 +80,10 @@ my $ref =   {
         },
         {
           answer    => [
-                         { checkbox => "[X]", text => "CPAN\n" },
-                         { checkbox => "[ ]", text => "CSPAN\n" },
-                         { checkbox => "[ ]", text => "Github\n" },
-                         { checkbox => "[ ]", text => "Perlhub\n" },
+                         { checkbox => "[X]", text => "CPAN" },
+                         { checkbox => "[ ]", text => "CSPAN" },
+                         { checkbox => "[ ]", text => "Github" },
+                         { checkbox => "[ ]", text => "Perlhub" },
                          { checkbox => "[ ]", text => "www.perl.org" },
                        ],
           question  => {
@@ -97,19 +96,19 @@ my $ref =   {
           answer    => [
                          {
                            checkbox => "[X]",
-                           text => "'\$' for scalars, '\@' for arrays, '%' for hashes\n",
+                           text => "'\$' for scalars, '\@' for arrays, '%' for hashes",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "'\$' for scalars, '\@' for hashes, '%' for arrays\n",
+                           text => "'\$' for scalars, '\@' for hashes, '%' for arrays",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "'\$' for scalars, '\@' for consts, '%' for literals\n",
+                           text => "'\$' for scalars, '\@' for consts, '%' for literals",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "'\$' for numeric, '\@' for emails, '%' for percentages\n",
+                           text => "'\$' for numeric, '\@' for emails, '%' for percentages",
                          },
                          {
                            checkbox => "[ ]",
@@ -126,19 +125,19 @@ my $ref =   {
           answer    => [
                          {
                            checkbox => "[X]",
-                           text => "'my' variables are lexically scoped;  'our' variables are package scoped\n",
+                           text => "'my' variables are lexically scoped;  'our' variables are package scoped",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "'my' variables are subroutine scoped; 'our' variables are block scoped\n",
+                           text => "'my' variables are subroutine scoped; 'our' variables are block scoped",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "'my' variables are compile-time;      'our' variables are run-time\n",
+                           text => "'my' variables are compile-time;      'our' variables are run-time",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "'my' variables must be scalars;       'our' variables must be arrays or hashes\n",
+                           text => "'my' variables must be scalars;       'our' variables must be arrays or hashes",
                          },
                          {
                            checkbox => "[ ]",
@@ -155,19 +154,19 @@ my $ref =   {
           answer    => [
                          {
                            checkbox => "[X]",
-                           text => "...does not interpolate variables or backslashed escape sequences\n",
+                           text => "...does not interpolate variables or backslashed escape sequences",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "...only interpolates variables, but not backslashed escape sequences\n",
+                           text => "...only interpolates variables, but not backslashed escape sequences",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "...only interpolates backslashed escape sequences, but not variables\n",
+                           text => "...only interpolates backslashed escape sequences, but not variables",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "...interpolates both variables and backslashed escape sequences\n",
+                           text => "...interpolates both variables and backslashed escape sequences",
                          },
                          {
                            checkbox => "[ ]",
@@ -184,21 +183,20 @@ my $ref =   {
           answer    => [
                          {
                            checkbox => "[X]",
-                           text => "...another way of writing the double-quoted string: \"XXXXX\"\n",
+                           text => "...another way of writing the double-quoted string: \"XXXXX\"",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "...another way of writing the single-quoted string: 'XXXXX'\n",
+                           text => "...another way of writing the single-quoted string: 'XXXXX'",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "...another way of writing the list of strings:  ('X', 'X', 'X', 'X', 'X')\n",
+                           text => "...another way of writing the list of strings:  ('X', 'X', 'X', 'X', 'X')",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "...another way of writing the array of strings:",
+                           text => "...another way of writing the array of strings: ['X', 'X', 'X', 'X', 'X']",
                          },
-                         { checkbox => "['X', 'X', 'X', 'X', 'X']", text => "\n" },
                          {
                            checkbox => "[ ]",
                            text => "...a call to the 'qq' function, passing it a block of code",
@@ -209,10 +207,10 @@ my $ref =   {
         },
         {
           answer    => [
-                         { checkbox => "[X]", text => "1'042\n" },
-                         { checkbox => "[ ]", text => "1042\n" },
-                         { checkbox => "[ ]", text => "1_042\n" },
-                         { checkbox => "[ ]", text => "1.042e3\n" },
+                         { checkbox => "[X]", text => "1'042" },
+                         { checkbox => "[ ]", text => 1042 },
+                         { checkbox => "[ ]", text => "1_042" },
+                         { checkbox => "[ ]", text => "1.042e3" },
                          { checkbox => "[ ]", text => "0b10000010010" },
                        ],
           question  => {
@@ -223,15 +221,15 @@ my $ref =   {
         },
         {
           answer    => [
-                         { checkbox => "[X]", text => "A container for a list\n" },
-                         { checkbox => "[ ]", text => "Exactly the same thing as a list\n" },
+                         { checkbox => "[X]", text => "A container for a list" },
+                         { checkbox => "[ ]", text => "Exactly the same thing as a list" },
                          {
                            checkbox => "[ ]",
-                           text => "Something that is always contained inside a list\n",
+                           text => "Something that is always contained inside a list",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "A list with a predeclared fixed number of elements\n",
+                           text => "A list with a predeclared fixed number of elements",
                          },
                          { checkbox => "[ ]", text => "A multidimensional list" },
                        ],
@@ -240,18 +238,18 @@ my $ref =   {
         },
         {
           answer    => [
-                         { checkbox => "[X]", text => "...in all circumstances\n" },
+                         { checkbox => "[X]", text => "...in all circumstances" },
                          {
                            checkbox => "[ ]",
-                           text => "...only if it controls exactly one statement\n",
+                           text => "...only if it controls exactly one statement",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "...only if it controls two or more statements\n",
+                           text => "...only if it controls two or more statements",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "...only if the statements it controls include a variable declaration\n",
+                           text => "...only if the statements it controls include a variable declaration",
                          },
                          {
                            checkbox => "[ ]",
@@ -266,16 +264,16 @@ my $ref =   {
         },
         {
           answer    => [
-                         { checkbox => "[X]", text => "elsif\n" },
+                         { checkbox => "[X]", text => "elsif" },
                          {
                            checkbox => "[ ]",
-                           text => "elseif  (with no whitespace between the two words)\n",
+                           text => "elseif  (with no whitespace between the two words)",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "else if (with whitespace between the two words)\n",
+                           text => "else if (with whitespace between the two words)",
                          },
-                         { checkbox => "[ ]", text => "elif\n" },
+                         { checkbox => "[ ]", text => "elif" },
                          {
                            checkbox => "[ ]",
                            text => "ormaybe (with no whitespace between the two words)",
@@ -291,19 +289,19 @@ my $ref =   {
           answer    => [
                          {
                            checkbox => "[X]",
-                           text => "...Perl evaluates as little as required to get a definite answer\n",
+                           text => "...Perl evaluates as little as required to get a definite answer",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "...Perl only evaluates each boolean expression once during the program\n",
+                           text => "...Perl only evaluates each boolean expression once during the program",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "...Perl defers evaluating the expression until the result is tested\n",
+                           text => "...Perl defers evaluating the expression until the result is tested",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "...Perl will never execute an 'else' block\n",
+                           text => "...Perl will never execute an 'else' block",
                          },
                          {
                            checkbox => "[ ]",
@@ -320,19 +318,19 @@ my $ref =   {
           answer    => [
                          {
                            checkbox => "[X]",
-                           text => "...once per element in the list, unless a 'last' is executed in the block\n",
+                           text => "...once per element in the list, unless a 'last' is executed in the block",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "...once per element in the list in all circumstances\n",
+                           text => "...once per element in the list in all circumstances",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "...endlessly, until a 'last' is executed in the loop\n",
+                           text => "...endlessly, until a 'last' is executed in the loop",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "...an unknown number of times, until the list being iterated is empty\n",
+                           text => "...an unknown number of times, until the list being iterated is empty",
                          },
                          {
                            checkbox => "[ ]",
@@ -349,19 +347,19 @@ my $ref =   {
           answer    => [
                          {
                            checkbox => "[X]",
-                           text => "...iterates until its condition is false at the start of an iteration\n",
+                           text => "...iterates until its condition is false at the start of an iteration",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "...iterates until its condition is true at the start of an iteration\n",
+                           text => "...iterates until its condition is true at the start of an iteration",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "...iterates until its condition becomes false anywhere within its block\n",
+                           text => "...iterates until its condition becomes false anywhere within its block",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "...iterates until its condition becomes true anywhere within its block\n",
+                           text => "...iterates until its condition becomes true anywhere within its block",
                          },
                          {
                            checkbox => "[ ]",
@@ -373,13 +371,10 @@ my $ref =   {
         },
         {
           answer    => [
-                         { checkbox => "[X]", text => "'given'  and 'when'    and 'default'\n" },
-                         { checkbox => "[ ]", text => "'switch' and 'case'    and 'else'\n" },
-                         {
-                           checkbox => "[ ]",
-                           text => "'gather' and 'take'    and 'otherwise'\n",
-                         },
-                         { checkbox => "[ ]", text => "'case'   and 'of'      and 'or'\n" },
+                         { checkbox => "[X]", text => "'given'  and 'when'    and 'default'" },
+                         { checkbox => "[ ]", text => "'switch' and 'case'    and 'else'" },
+                         { checkbox => "[ ]", text => "'gather' and 'take'    and 'otherwise'" },
+                         { checkbox => "[ ]", text => "'case'   and 'of'      and 'or'" },
                          { checkbox => "[ ]", text => "'whence' and 'whither' and 'thither'" },
                        ],
           question  => {
@@ -390,11 +385,10 @@ my $ref =   {
         },
         {
           answer    => [
-                         { checkbox => "[X]", text => "0, '0', '', (), undef\n" },
-                         { checkbox => "[ ]", text => "0, '0', '', ()," },
-                         { checkbox => "[]", text => "\n" },
-                         { checkbox => "[ ]", text => "0, '0', 'false', 'False', 'FALSE'\n" },
-                         { checkbox => "[ ]", text => "0, +0, -0, 0.0, -0.0\n" },
+                         { checkbox => "[X]", text => "0, '0', '', (), undef" },
+                         { checkbox => "[ ]", text => "0, '0', '', (), []" },
+                         { checkbox => "[ ]", text => "0, '0', 'false', 'False', 'FALSE'" },
+                         { checkbox => "[ ]", text => "0, +0, -0, 0.0, -0.0" },
                          { checkbox => "[ ]", text => "False, Nil, Null, None, Empty" },
                        ],
           question  => {
@@ -407,16 +401,16 @@ my $ref =   {
           answer    => [
                          {
                            checkbox => "[X]",
-                           text => "Six:   because the four array elements will be flattened into the list\n",
+                           text => "Six:   because the four array elements will be flattened into the list",
                          },
-                         { checkbox => "[ ]", text => "Eight: because 1 * 4 * 2 = 8\n" },
+                         { checkbox => "[ ]", text => "Eight: because 1 * 4 * 2 = 8" },
                          {
                            checkbox => "[ ]",
-                           text => "Three: because the array will become a single element within the list\n",
+                           text => "Three: because the array will become a single element within the list",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "Two:   because Perl ignores non-scalar variables in a list constructor\n",
+                           text => "Two:   because Perl ignores non-scalar variables in a list constructor",
                          },
                          {
                            checkbox => "[ ]",
@@ -433,19 +427,19 @@ my $ref =   {
           answer    => [
                          {
                            checkbox => "[X]",
-                           text => "Values of any scalar type, indexed by keys that are always strings\n",
+                           text => "Values of any scalar type, indexed by keys that are always strings",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "Values of any scalar or list type, indexed by keys that are always strings\n",
+                           text => "Values of any scalar or list type, indexed by keys that are always strings",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "Values that are always strings, indexed by keys of any type\n",
+                           text => "Values that are always strings, indexed by keys of any type",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "Values that are unique, indexed by keys that may be repeated\n",
+                           text => "Values that are unique, indexed by keys that may be repeated",
                          },
                          {
                            checkbox => "[ ]",
@@ -459,19 +453,19 @@ my $ref =   {
           answer    => [
                          {
                            checkbox => "[X]",
-                           text => "0 (because that's the correct mathematical outcome)\n",
+                           text => "0 (because that's the correct mathematical outcome)",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "1 (as a convenience, to avoid subsequent division by zero)\n",
+                           text => "1 (as a convenience, to avoid subsequent division by zero)",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "A non-fatal warning (because 'Inf' is a string, not a number)\n",
+                           text => "A non-fatal warning (because 'Inf' is a string, not a number)",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "A fatal exception (because 'Inf' is a string, not a number)\n",
+                           text => "A fatal exception (because 'Inf' is a string, not a number)",
                          },
                          {
                            checkbox => "[ ]",
@@ -485,19 +479,19 @@ my $ref =   {
           answer    => [
                          {
                            checkbox => "[X]",
-                           text => "A type-safe immutable pointer to an existing value or variable\n",
+                           text => "A type-safe immutable pointer to an existing value or variable",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "A mutable pointer to a value or variable, without type-checking\n",
+                           text => "A mutable pointer to a value or variable, without type-checking",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "An alias (i.e. another name) for an existing variable\n",
+                           text => "An alias (i.e. another name) for an existing variable",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "A deep copy of an existing variable or value\n",
+                           text => "A deep copy of an existing variable or value",
                          },
                          {
                            checkbox => "[ ]",
@@ -511,19 +505,19 @@ my $ref =   {
           answer    => [
                          {
                            checkbox => "[X]",
-                           text => "...scalars, arrays, hashes, and subroutines\n",
+                           text => "...scalars, arrays, hashes, and subroutines",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "...scalars, arrays, and hashes, but NOT subroutines\n",
+                           text => "...scalars, arrays, and hashes, but NOT subroutines",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "...scalars and arrays, but NOT hashes or subroutines\n",
+                           text => "...scalars and arrays, but NOT hashes or subroutines",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "...arrays and hashes (i.e. containers), but NOT scalars or subroutines\n",
+                           text => "...arrays and hashes (i.e. containers), but NOT scalars or subroutines",
                          },
                          {
                            checkbox => "[ ]",
@@ -535,10 +529,10 @@ my $ref =   {
         },
         {
           answer    => [
-                         { checkbox => "[X]", text => "'sub'\n" },
-                         { checkbox => "[ ]", text => "'subroutine'\n" },
-                         { checkbox => "[ ]", text => "'fun'\n" },
-                         { checkbox => "[ ]", text => "'do'\n" },
+                         { checkbox => "[X]", text => "'sub'" },
+                         { checkbox => "[ ]", text => "'subroutine'" },
+                         { checkbox => "[ ]", text => "'fun'" },
+                         { checkbox => "[ ]", text => "'do'" },
                          {
                            checkbox => "[ ]",
                            text => "Nothing: subroutines are not explicitly declared in Perl",
@@ -552,10 +546,10 @@ my $ref =   {
         },
         {
           answer    => [
-                         { checkbox => "[X]", text => "\@_\n" },
-                         { checkbox => "[ ]", text => "\$_\n" },
-                         { checkbox => "[ ]", text => "\@ARGV\n" },
-                         { checkbox => "[ ]", text => "\@ARGS\n" },
+                         { checkbox => "[X]", text => "\@_" },
+                         { checkbox => "[ ]", text => "\$_" },
+                         { checkbox => "[ ]", text => "\@ARGV" },
+                         { checkbox => "[ ]", text => "\@ARGS" },
                          { checkbox => "[ ]", text => "\$ARGV" },
                        ],
           question  => {
@@ -568,19 +562,19 @@ my $ref =   {
           answer    => [
                          {
                            checkbox => "[X]",
-                           text => "sub two_or_more (\$flag, \@data)           {...}\n",
+                           text => "sub two_or_more (\$flag, \@data)           {...}",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "sub two_or_more (\$data, \$flag)           {...}\n",
+                           text => "sub two_or_more (\$data, \$flag)           {...}",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "sub two_or_more (\$flag, \$data = \@extras) {...}\n",
+                           text => "sub two_or_more (\$flag, \$data = \@extras) {...}",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "sub two_or_more (\$flag, ...)             {...}\n",
+                           text => "sub two_or_more (\$flag, ...)             {...}",
                          },
                          {
                            checkbox => "[ ]",
@@ -597,16 +591,16 @@ my $ref =   {
           answer    => [
                          {
                            checkbox => "[X]",
-                           text => "...it will return the value the last expression it actually evaluates\n",
+                           text => "...it will return the value the last expression it actually evaluates",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "...it will return the value the final statement in its code block\n",
+                           text => "...it will return the value the final statement in its code block",
                          },
-                         { checkbox => "[ ]", text => "...it will return 'undef'\n" },
+                         { checkbox => "[ ]", text => "...it will return 'undef'" },
                          {
                            checkbox => "[ ]",
-                           text => "...it will throw an exception after executing its final statement\n",
+                           text => "...it will throw an exception after executing its final statement",
                          },
                          {
                            checkbox => "[ ]",
@@ -621,10 +615,10 @@ my $ref =   {
         },
         {
           answer    => [
-                         { checkbox => "[X]", text => "'die'\n" },
-                         { checkbox => "[ ]", text => "'throw'\n" },
-                         { checkbox => "[ ]", text => "'raise'\n" },
-                         { checkbox => "[ ]", text => "'except'\n" },
+                         { checkbox => "[X]", text => "'die'" },
+                         { checkbox => "[ ]", text => "'throw'" },
+                         { checkbox => "[ ]", text => "'raise'" },
+                         { checkbox => "[ ]", text => "'except'" },
                          { checkbox => "[ ]", text => "'exit'" },
                        ],
           question  => { id => 28, text => " The keyword to throw an exception in Perl is:" },
@@ -634,19 +628,19 @@ my $ref =   {
           answer    => [
                          {
                            checkbox => "[X]",
-                           text => "Caught in an 'eval' block;  accessed via the special \$\@ variable\n",
+                           text => "Caught in an 'eval' block;  accessed via the special \$\@ variable",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "Caught in an 'eval' block'; accessed via the special \$! variable\n",
+                           text => "Caught in an 'eval' block'; accessed via the special \$! variable",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "Caught in a 'catch' block;  accessed via an 'access' block\n",
+                           text => "Caught in a 'catch' block;  accessed via an 'access' block",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "Caught in a 'try' block;    accessed via the builtin 'eval' function\n",
+                           text => "Caught in a 'try' block;    accessed via the builtin 'eval' function",
                          },
                          {
                            checkbox => "[ ]",
@@ -663,19 +657,19 @@ my $ref =   {
           answer    => [
                          {
                            checkbox => "[X]",
-                           text => "It disallows undeclared variables, barewords, and symbolic references\n",
+                           text => "It disallows undeclared variables, barewords, and symbolic references",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "It converts all warnings to fatal errors\n",
+                           text => "It converts all warnings to fatal errors",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "It disallows package variables (all variables must be declared with 'my')\n",
+                           text => "It disallows package variables (all variables must be declared with 'my')",
                          },
                          {
                            checkbox => "[ ]",
-                           text => "It reports all errors using verbose (and harshly worded) error messages\n",
+                           text => "It reports all errors using verbose (and harshly worded) error messages",
                          },
                          {
                            checkbox => "[ ]",
@@ -686,8 +680,7 @@ my $ref =   {
                          id => 30,
                          text => " What is the purpose of the 'use strict' pragma?",
                        },
-          separator => "\n=====\n",
+          separator => "\n================================================================================\n",
         },
       ],
     }
-;

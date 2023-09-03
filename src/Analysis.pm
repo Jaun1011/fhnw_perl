@@ -1,4 +1,4 @@
-package Multi::Analysis;
+package Analysis;
 
 use v5.36;
 use strict;
@@ -25,8 +25,6 @@ sub _shuffle($items){
 sub shuffleAnswers($seed, $exam){
     
     srand($seed);
-
-
     foreach my $q (@{$exam->{question_answers}}){
         _shuffle($q->{answer});
     }

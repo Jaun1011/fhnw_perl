@@ -1,4 +1,4 @@
-package Multi::File;
+package File;
 
 use v5.36;
 use strict;
@@ -8,6 +8,9 @@ sub write($content, $filename){
     open(my $fh, '>', $filename) or die $!;
     print $fh $content;
     close($fh);
+
+
+    say "write to file $filename";
 }
 
 
@@ -18,4 +21,7 @@ sub read($filename){
     local $/;
     return readline($fh);
 }
+
+
+
 1;
