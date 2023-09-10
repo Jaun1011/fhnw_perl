@@ -4,8 +4,9 @@ use v5.36;
 use strict;
 use warnings;
 
-
 use POSIX qw(strftime);
+
+use File::Basename;
 
 sub write($content, $filename){
     open(my $fh, '>', $filename) or die $!;
@@ -15,33 +16,25 @@ sub write($content, $filename){
     say "write to file $filename";
 }
 
-
-
 sub read($filename){
     say "read file $filename";
     open my $fh, '<', $filename or return undef;
     local $/;
+
     return readline($fh);
 }
 
 
-sub generate_filename($dir, $name, $seed){
-	my $time   = strftime("%Y%m%d%H%M%S", localtime()); 
-	my $file   = $time. "_" . $seed ."_". $name;
-	my $target = $dir. $file;
+sub generate_filename($filepath,){
 
+    my ($filename, $dirs) = fileparse($filepath);
+
+	my $time   = strftime("%Y%m%d-%H%M%S", localtime()); 
+	my $file   = $time. "-" . $filename;
+	my $target = $dirs . $file;
     return $target;
 }
 
-
-sub extract_seed($file){
-    my $PATTERN_SEED = qr(.*_(?<seed>\d+)_.*);
-    
-    if ($file =~ $PATTERN_SEED){
-        return int($+{seed});
-    }
-    
-    return undef;
-}
-
 1;
+=head1 Usage
+used in part 1, part 2

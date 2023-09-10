@@ -7,7 +7,7 @@ use Data::Show;
 use Data::Dumper;
 
 use lib 'src';
-use Analysis;
+use Shuffle;
 
 
 my $exam = {
@@ -34,7 +34,7 @@ my @answers = [
     { key => 4, text => 1 },
 ];
 
-Analysis::shuffle_answers($exam, "1234");
-is_deeply( @answers, $exam->{question_answers}->[0]->{answer});
+Shuffle::shuffle_answers($exam, "1234");
+is_deeply(@answers, $exam->{question_answers}->[0]->{answer});
 
 done_testing();

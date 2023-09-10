@@ -7,11 +7,9 @@ use Data::Show;
 use Data::Dumper;
 
 use lib 'src';
-use Converter;
 use File;
 
-
-my $seed = File::extract_seed("./res/test/12345_9999_jku");
-is $seed, 9999;
+my $file = File::generate_filename("./test/blub"); 
+ok $file =~ qr(\./test/\d{8}-\d{6}-.*);
 
 done_testing();

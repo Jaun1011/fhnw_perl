@@ -2,14 +2,13 @@
 
 ## Extension 1
 - [x] Using the sample examination master files you have been provided with,write a Perl program that generates a random exam file from a master file, by processing each master file as follows:
-    - [ ] remove the “correct answer” indicator ([X]) from any answer,
-    - [ ] randomize the order of the answers for each question,
-    - [ ] print each answer with an empty check-box ([ ]) in front of it.
-- [ ] Your program should take a single argument: the name of the examination master file to be processed.
-- [ ] Your program should write the post-processed contents of the examination master file to another file whose name begins with a timestamp in the form
+    - [x] remove the “correct answer” indicator ([X]) from any answer,
+    - [x] randomize the order of the answers for each question,
+    - [x] print each answer with an empty check-box ([ ]) in front of it.
+- [x] Your program should take a single argument: the name of the examination master file to be processed.
+- [x] Your program should write the post-processed contents of the examination master file to another file whose name begins with a timestamp in the form
 YYYYMMDD-HHMMSS-<FILENAME>, where <FILENAME> is the name of the original master file.
-- [ ] For example, if the original master file was IntroPerlEntryExam.txt, then your program should write the modified contents to something like:
-        
+- [x] For example, if the original master file was IntroPerlEntryExam.txt, then your program should write the modified contents to something like:
 
 
 20220904-132602-IntroPerlEntryExam.txt

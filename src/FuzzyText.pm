@@ -13,15 +13,15 @@ sub _preproces($text){
 
     # text to lowercase    
     $text = lc $text;
-
     $text =~ s/$PATTERN_REPLACE_TOKENS//g;
+
     return $text;
 }
-
 
 sub compare($t1, $t2){
     return _preproces($t1) eq _preproces($t2);
 }
-
-
 1;
+
+=head1 FuzzyText Documentation
+used in part2

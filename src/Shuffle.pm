@@ -1,4 +1,4 @@
-package Analysis;
+package Shuffle;
 
 use v5.36;
 use strict;
@@ -30,6 +30,6 @@ sub shuffle_answers($exam, $seed){
 1;
 
 
-=head1 ANALYSIS
-The analysis module provides functions as median.
+=head1 Usage
+used for part1 
 

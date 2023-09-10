@@ -4,7 +4,6 @@ use warnings;
 
 
 use lib 'src';
-use Analysis;
 use File;
 use ExamLoader;
 use Converter;
@@ -12,26 +11,7 @@ use ExamChecker;
 
 use Data::Show;
 
-
-sub arguments(@argv){
-
-
-	my $arguments = {
-		command =>  shift @argv,
-	};
-
-	for (my $i = 0; $i < @argv; $i += 2) {
-		my $key	  = $argv[$i];
-		my $value = $argv[$i + 1];
-
- 		$key 	  =~ s/-{1,2}//;
-		$arguments->{$key} = $value;
-	}
-
-	return $arguments;
-}
-
-
+=head1 test
 sub load_exam($path){
 	my $content  = File::read($path);
 	my $exam     = ExamLoader::load_exam($content);
@@ -74,25 +54,6 @@ sub compare_exam($arguments){
 
 
 
-
-
-sub main(){
-
-	my $arguments = arguments(@ARGV);
-
-	if ("generate" eq $arguments->{command}){
-		say "> start generating..";
-		generate_exam($arguments);
-		return;
-	}
-
-
-	if ("compare" eq $arguments->{command}){
-		say "> start check...";
-		compare_exam($arguments);
-		return;
-	}
-}
 
 main();
 
