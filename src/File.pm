@@ -11,8 +11,7 @@ sub write($content, $filename){
     open(my $fh, '>', $filename) or die $!;
     print $fh $content;
     close($fh);
-
-
+    
     say "write to file $filename";
 }
 
@@ -27,12 +26,10 @@ sub read($filename){
 
 
 sub generate_filename($dir, $name, $seed){
-
-	my $time = strftime("%Y%m%d%H%M%S", localtime()); 
-	my $file = $time. "_" . $seed ."_". $name;
-
+	my $time   = strftime("%Y%m%d%H%M%S", localtime()); 
+	my $file   = $time. "_" . $seed ."_". $name;
 	my $target = $dir. $file;
-    
+
     return $target;
 }
 
@@ -41,7 +38,7 @@ sub extract_seed($file){
     my $PATTERN_SEED = qr(.*_(?<seed>\d+)_.*);
     
     if ($file =~ $PATTERN_SEED){
-        return $+{seed};
+        return int($+{seed});
     }
     
     return undef;

@@ -54,7 +54,7 @@ sub questions($question_answers){
 	return $result;
 }
 
-sub toFileContent($exam){
+sub convert_exam_to_string($exam){
 
 	my $result 
 		= intro($exam->{intro})

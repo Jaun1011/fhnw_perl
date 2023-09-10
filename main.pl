@@ -4,10 +4,11 @@ use warnings;
 
 
 use lib 'src';
+use Analysis;
 use File;
 use ExamLoader;
 use Converter;
-use Analysis;
+use ExamChecker;
 
 use Data::Show;
 
@@ -43,6 +44,9 @@ sub generate_exam($arguments){
 
 	my $seed = int(rand(1000000));
 
+	my $exam = load_exam($arguments->{master});
+	Analysis::shuffle_answers($exam, $seed);
+	
 	my $target = File::generate_filename(
 		$arguments->{target},
 		$arguments->{name},
@@ -50,15 +54,12 @@ sub generate_exam($arguments){
 	);
 
 
-
-	my $exam = load_exam($arguments->{master});
-
-	show($exam);
-	Analysis::shuffleAnswers($seed, $exam);
-	
-	my $result = Converter::toFileContent($exam);
+	my $result = Converter::to_exam($exam);
 	File::write($result, $target);
 }
+
+
+
 
 sub compare_exam($arguments){
 	my $student_file = $arguments->{target};
@@ -68,9 +69,7 @@ sub compare_exam($arguments){
 
 	my $seed = File::extract_seed($student_file);
 	
-	Analysis::check_exam($master_exam, $student_exam, $seed);
-	
-
+	ExamChecker::check_exam($master_exam, $student_exam, $seed);
 }
 
 
@@ -80,8 +79,6 @@ sub compare_exam($arguments){
 sub main(){
 
 	my $arguments = arguments(@ARGV);
-
-
 
 	if ("generate" eq $arguments->{command}){
 		say "> start generating..";
@@ -93,19 +90,8 @@ sub main(){
 	if ("compare" eq $arguments->{command}){
 		say "> start check...";
 		compare_exam($arguments);
-
-
-		
 		return;
 	}
-
-
-
-
-
-
-
-	
 }
 
 main();

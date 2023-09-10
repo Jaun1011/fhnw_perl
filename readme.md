@@ -22,3 +22,8 @@
 
 
 
+
+
+lowercase
+
+$b = lc $a;

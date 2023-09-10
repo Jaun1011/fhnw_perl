@@ -25,7 +25,6 @@ my $exam = {
     ]
 };
 
-
 my @answers = [
     { key => 5, text => 1 },
     { key => 1, text => 1 },
@@ -35,7 +34,7 @@ my @answers = [
     { key => 4, text => 1 },
 ];
 
-Analysis::shuffleAnswers("1234", $exam);
+Analysis::shuffle_answers($exam, "1234");
 is_deeply( @answers, $exam->{question_answers}->[0]->{answer});
 
 done_testing();
