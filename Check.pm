@@ -4,14 +4,15 @@ use strict;
 use warnings;
 
 
+use Data::Show;
+
 use lib 'src';
 use Arguments;
 use File;
 use ExamLoader;
 use Shuffle;
-use Converter;
+use ExamChecker;
 
-use Data::Show;
 
 
 
@@ -23,16 +24,13 @@ sub main(){
 	my $master_file = $arguments->{master};
 	my $student_file = $arguments->{target};
 	
-	my $content  = File::read($master_file);
-	my $exam     = ExamLoader::load_exam($content);
+	my $master_content  = File::read($master_file);
+	my $master_exam     = ExamLoader::load_exam($master_content);
 	
-
-	my $student_exam = load_exam($student_file);
-	my $master_exam  = load_exam($arguments->{master});
-
-	my $seed = File::extract_seed($student_file);
+	my $student_content  = File::read($student_file);
+	my $student_exam     = ExamLoader::load_exam($student_content);
 	
-	ExamChecker::check_exam($master_exam, $student_exam, $seed);
+	ExamChecker::check_exam($master_exam, $student_exam);
 
 }
 

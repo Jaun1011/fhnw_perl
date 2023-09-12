@@ -17,19 +17,16 @@ YYYYMMDD-HHMMSS-<FILENAME>, where <FILENAME> is the name of the original master 
 ## Extension 2
 
 
-- [ ] To successfully complete Part 1b of the main task, it is sufficient to match questions and answers exactly (i.e. character-for-character), and to score any question or answer
-from the examination file as zero, if that question or answer does not appear in precisely the same form in the answer file.
-- [ ] In this extension, your task is to allow for slight changes in the text of either the question
-or the answers…but still match them accurately.
-- [ ] Modify your solution to Part 1b of the main task to allow for trivial differences in layout
-or casing, by “normalizing” each question and each answer before they are compared.
-- [ ] Normalization consists of:
+- [x] To successfully complete Part 1b of the main task, it is sufficient to match questions and answers exactly (i.e. character-for-character), and to score any question or answer from the examination file as zero, if that question or answer does not appear in precisely the same form in the answer file.
+- [x] In this extension, your task is to allow for slight changes in the text of either the question or the answers…but still match them accurately.
+- [x] Modify your solution to Part 1b of the main task to allow for trivial differences in layout or casing, by “normalizing” each question and each answer before they are compared.
+- [x] Normalization consists of:
     -  converting the text to lower-case;
     - removing any “stop words” from the text;
     - removing any sequence of whitespace characters at the start and/or the end of the text;
     - replacing any remaining sequence of whitespace characters within the text
 with a single space character.
-- [ ] For example, a question such as:
+- [x] For example, a question such as:
     
 
         " What is the airspeed of a fully laden African swallow? "
@@ -42,9 +39,12 @@ with a single space character.
 - [ ] Now further modify your solution so that normalized questions and answers in the student’s file are compared against questions and answers in the master file using their “edit-distances”
 (i.e. their Levenshtein distance or Damerau–Levenshtein distance). You may either write
 your own implementation of this test, or use a module from CPAN.
+
+
 - [ ] Your edit-distance test must accept a match between two normalized strings only if their
 edit-distance is no more than 10% the length of the normalized original string
 (i.e. 10% of the length of the normalized string from the examination master file).
+
 - [ ] Your modifier program should report each case in which it accepts an inexact match between questions or answers. 
     For example:
         

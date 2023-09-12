@@ -12,7 +12,7 @@ use Test::More;
 use lib 'src';
 use FuzzyText;
 
-is FuzzyText::_preproces("a the is as   "), "";
-is FuzzyText::_preproces("this is a test"), "test";
+is FuzzyText::preproces("a the is as   "), "";
+is FuzzyText::preproces("this is a test"), "test";
 
 done_testing();

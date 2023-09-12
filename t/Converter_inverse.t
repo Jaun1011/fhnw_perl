@@ -23,7 +23,7 @@ my $exam = {
     },
     question_answers => [
         {
-            answer    => [
+            answer => [
                 { checkbox => "[ ]", text => "a 1" },
                 { checkbox => "[ ]", text => "a 2" },
             ],
@@ -35,6 +35,8 @@ my $exam = {
 
 my $file = "key: [___]\nINSTRUCTION:\n___\n1. question\n\n\t[ ] a 1\n\t[ ] a 2\n\n___\nEND";
 my $content = Converter::convert_exam_to_string($exam);
+
+
 
 is $content, $file;
 

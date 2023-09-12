@@ -7,66 +7,103 @@ use warnings;
 use Data::Dumper;
 use Data::Show;
 
-use Clone qw (clone);
+# todo check lewenstein distance
+sub _normalize_text($text){
+    my $PATTERN_REPLACE_TOKENS = qr( this | the | is | as | a |[^a-zA-Z0-9]); 
+    
+    $text = lc $text;
+    $text =~ s/$PATTERN_REPLACE_TOKENS//g;
 
-
-sub _check_question($master, $student){
-    my $m_question = $master->{question}->{text};
-    my $s_question = $student->{question}->{text};
-
-    if ($m_question ne $s_question){
-        return {
-            question_master  => $m_question,
-            question_student => $s_question,
-        };    
-    }
-
-    return {};
+    return $text;
 }
 
 
+sub _check_answers_checkbox($student_answer, $master){
+
+        my @filtered = grep { $_->{normalized_text} eq $student_answer->{normalized_text} } @{$master};
+
+        # check if an answer is found
+        if (0 == scalar @filtered){
+            return {
+                correct => 0,
+                message => "no question defined for ". $student_answer->{text}
+            };
+        }
 
 
-sub _check_answers_checkbox($master, $student){
+        # check if checkbox is equal
+        my $master_answer = $filtered[0];
+        if (lc $master_answer->{checkbox} ne lc $student_answer->{checkbox}){
+            return {
+                correct => 0,
+                message => "checkbox does not match"
+            };
+        }
 
-    my $size    = scalar @{$master->{answer}};
-    my $counter = 0;
+        # match was successfull
+        return {
+            correct => 1,
+            message => 'success'
+        };
 
-    for(my $i = 0; $i < $size; $i++){
-        my ($qm, $qs) = ($master->{answer}->[$i], $student->{answer}->[$i]);
+}
 
-        if ($qm->{checkbox} eq $qs->{checkbox}){
-            $counter++;
+sub _check_answers($master, $student){
+
+    my @master_answers  = map { $_->{normalized_text} = _normalize_text($_->{text}); $_ } @{$master->{answer}  };
+    my @student_answers = map { $_->{normalized_text} = _normalize_text($_->{text}); $_ } @{$student->{answer}  };
+    
+
+    my @checked_answers = map { _check_answers_checkbox($_, \@master_answers) } @student_answers; 
+
+    my $result = 0;
+    for my $checked (@checked_answers){
+        $result += $checked->{correct};
+    }
+
+
+    return {
+        score  => $result == scalar @master_answers,
+        ansers => \@checked_answers
+    }
+
+
+}
+
+
+sub _check_question_answers($question, $master_questions){
+
+    my @question_by_id = grep { $question->{question}->{id}  == $_->{question}->{id} } @{$master_questions};
+    
+
+    # no queston was found
+    if (0 == scalar @question_by_id){
+        return {
+            score  => 0,
+            message => "no question found in master file by id => " . $question->{question}->{id},
+        };
+    }
+
+    # check if questions are equal
+    my $master_question = $question_by_id[0];
+    if ($question->{question}->{text} ne $master_question->{question}->{text}){
+        return {
+            score  => 0,
+            message => "questions are different id => " . $question->{question}->{id},
+            
         }
     }
 
-    return $counter == $size;
-
+    my $result = _check_answers($master_question, $question);
+    return $result; 
 }
 
 
-sub _check_question_answers($master, $student){
-    return {
-        question => _check_question($master, $student),
-        correct  => _check_answers_checkbox($master, $student),
-    }
-}
-
-
-sub check_exam($master_exam, $student, $seed){
-
-    my $master = clone($master_exam);
-    Analysis::shuffle_answers($master, $seed);
-
-    my $result = {};
-    for(my $i = 0; $i < $#{$master->{question_answers}}; $i++){
-        my ($qm, $qs) = ($master->{question_answers}->[$i], $student->{question_answers}->[$i]);
-        $result->{$i} = _check_question_answers($qm, $qs);
-    }
-
-
-    return $result;
+sub check_exam($master, $student){
+    return map { _check_question_answers($_, $master->{question_answers}) } @{$student->{question_answers}};
 }
 
 1;
 
+=head1 Usage
+use in part2
