@@ -10,18 +10,6 @@ use Data::Show;
 use lib 'src';
 use TextNormalizer;
 
-
-# todo check lewenstein distance
-sub _normalize_text($text){
-    my $PATTERN_REPLACE_TOKENS = qr( this | the | is | as | a |[^a-zA-Z0-9]); 
-    
-    $text = lc $text;
-    $text =~ s/$PATTERN_REPLACE_TOKENS//g;
-
-    return $text;
-}
-
-
 sub _check_answers_checkbox($student_answer, $master){
 
         my @filtered = grep { $_->{normalized_text} eq $student_answer->{normalized_text} } @{$master};
@@ -30,7 +18,7 @@ sub _check_answers_checkbox($student_answer, $master){
         if (0 == scalar @filtered){
             return {
                 correct => 0,
-                message => "no question defined for ". $student_answer->{text}
+                message => "no answer defined for ". $student_answer->{text}
             };
         }
 

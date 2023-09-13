@@ -16,7 +16,6 @@ is TextNormalizer::standart_normalize(" TEST test "), "test test";
 is TextNormalizer::standart_normalize(" TEST test "), "test test";
 
 is TextNormalizer::standart_normalize("this there an was is a "), "";
-
 is TextNormalizer::standart_normalize("asdf this there an was is a ?"), "asdf ?";
 
 done_testing();
