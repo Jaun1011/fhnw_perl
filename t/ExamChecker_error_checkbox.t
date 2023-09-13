@@ -11,14 +11,6 @@ use ExamChecker;
 
 
 my $master_exam = {
- 	end => "END",
-    intro => {
-        identity_info => [
-            { key => "key", value => "___" },
-        ],
-        instructions  => "INSTRUCTION:",
-        separator     => "___",
-    },
     question_answers => [
         {
             answer    => [
@@ -33,14 +25,6 @@ my $master_exam = {
 
 
 my $student_exam = {
- 	end => "END",
-    intro => {
-        identity_info => [
-            { key => "key", value => "___" },
-        ],
-        instructions  => "INSTRUCTION:",
-        separator     => "___",
-    },
     question_answers => [
         {
             answer    => [
@@ -69,6 +53,4 @@ my @result = ExamChecker::check_exam($master_exam, $student_exam);
 
 is_deeply(\@result, \@expected);
 
-
-ok 1;
 done_testing();

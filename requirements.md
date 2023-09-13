@@ -21,10 +21,10 @@ YYYYMMDD-HHMMSS-<FILENAME>, where <FILENAME> is the name of the original master 
 - [x] In this extension, your task is to allow for slight changes in the text of either the question or the answers…but still match them accurately.
 - [x] Modify your solution to Part 1b of the main task to allow for trivial differences in layout or casing, by “normalizing” each question and each answer before they are compared.
 - [x] Normalization consists of:
-    -  converting the text to lower-case;
-    - removing any “stop words” from the text;
-    - removing any sequence of whitespace characters at the start and/or the end of the text;
-    - replacing any remaining sequence of whitespace characters within the text
+    - [x] converting the text to lower-case;
+    - [ ] removing any “stop words” from the text;
+    - [x] removing any sequence of whitespace characters at the start and/or the end of the text;
+    - [x] replacing any remaining sequence of whitespace characters within the text
 with a single space character.
 - [x] For example, a question such as:
     

@@ -14,7 +14,7 @@ my $master_exam = {
     question_answers => [
         {
             answer    => [
-                { checkbox => "[x]", text => "abc 1" },
+                { checkbox => "[x]", text => "abcx 1" },
                 { checkbox => "[ ]", text => "abc 2" },
             ],
             question  => { id => 1, text => "question x" },
@@ -22,7 +22,6 @@ my $master_exam = {
         }
      ]
 };
-
 
 my $student_exam = {
     question_answers => [
@@ -33,25 +32,23 @@ my $student_exam = {
                 { checkbox => "[ ]", text => "abc 2" },
             ],
             question  => { id => 1, text => "question x" },
-            separator => "___",
         }
     ]
 };
 
 
-
 my @expected = (
-    {
+     {
         ansers => [
-            { correct => 1, message => "success" },
+            { correct => 0, message => "no question defined for abc 1" },
             { correct => 1, message => "success" },
         ],
-        score => 1,
-    },
+        score  => "",
+      },
 );
 
-my @result = ExamChecker::check_exam($master_exam, $student_exam);
 
+my @result = ExamChecker::check_exam($master_exam, $student_exam);
 is_deeply(\@result, \@expected);
 
 done_testing();

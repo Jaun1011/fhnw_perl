@@ -7,6 +7,10 @@ use warnings;
 use Data::Dumper;
 use Data::Show;
 
+use lib 'src';
+use TextNormalizer;
+
+
 # todo check lewenstein distance
 sub _normalize_text($text){
     my $PATTERN_REPLACE_TOKENS = qr( this | the | is | as | a |[^a-zA-Z0-9]); 
@@ -50,8 +54,8 @@ sub _check_answers_checkbox($student_answer, $master){
 
 sub _check_answers($master, $student){
 
-    my @master_answers  = map { $_->{normalized_text} = _normalize_text($_->{text}); $_ } @{$master->{answer}  };
-    my @student_answers = map { $_->{normalized_text} = _normalize_text($_->{text}); $_ } @{$student->{answer}  };
+    my @master_answers  = map { $_->{normalized_text} = TextNormalizer::standart_normalize($_->{text}); $_ } @{ $master->{answer}  };
+    my @student_answers = map { $_->{normalized_text} = TextNormalizer::standart_normalize($_->{text}); $_ } @{ $student->{answer} };
     
 
     my @checked_answers = map { _check_answers_checkbox($_, \@master_answers) } @student_answers; 
