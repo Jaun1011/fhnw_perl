@@ -14,11 +14,18 @@ sub _check_answers_checkbox($student_answer, $master){
 
         my @filtered = grep { $_->{normalized_text} eq $student_answer->{normalized_text} } @{$master};
 
+
+        my @distance = grep 
+            { TextNormalizer::levenshtein($_->{normalized_text},  $student_answer->{normalized_text} ) }
+            @{$master};
+
+
+
         # check if an answer is found
         if (0 == scalar @filtered){
             return {
                 correct => 0,
-                message => "no answer defined for ". $student_answer->{text}
+                message => "no answer defined for " . $student_answer->{text}
             };
         }
 
@@ -40,7 +47,12 @@ sub _check_answers_checkbox($student_answer, $master){
 
 }
 
+
+
+
 sub _check_answers($master, $student){
+
+
 
     my @master_answers  = map { $_->{normalized_text} = TextNormalizer::standart_normalize($_->{text}); $_ } @{ $master->{answer}  };
     my @student_answers = map { $_->{normalized_text} = TextNormalizer::standart_normalize($_->{text}); $_ } @{ $student->{answer} };

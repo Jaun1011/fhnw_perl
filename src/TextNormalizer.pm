@@ -27,12 +27,21 @@ sub standart_normalize($text){
     
     # in between whitespaces
     $text =~ s/\s+/ /g;
-    
+
     # start and end whitespaces
     $text =~ s/(^\s*|\s*$)//g;
 
     return $text;
 }
+
+
+sub levenshtein_percentage($s1, $s2){
+    my ($len1, $len2) = (length $s1, length $s2);
+
+    my $distance = levenshtein($s1, $s2);
+    return $distance / $len1;
+}
+
 
 sub levenshtein($s1, $s2) {
     my ($len1, $len2) = (length $s1, length $s2);
