@@ -38,12 +38,12 @@ sub standart_normalize($text){
 sub levenshtein_percentage($s1, $s2){
     my ($len1, $len2) = (length $s1, length $s2);
 
-    my $distance = levenshtein($s1, $s2);
+    my $distance = _levenshtein($s1, $s2);
     return $distance / $len1;
 }
 
 
-sub levenshtein($s1, $s2) {
+sub _levenshtein($s1, $s2) {
     my ($len1, $len2) = (length $s1, length $s2);
 
     my @matrix;

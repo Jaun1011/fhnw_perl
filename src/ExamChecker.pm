@@ -12,26 +12,22 @@ use TextNormalizer;
 
 sub _check_answers_checkbox($student_answer, $master){
 
-        my @filtered = grep { $_->{normalized_text} eq $student_answer->{normalized_text} } @{$master};
 
+        my $THRESHOLD_DISTANCE = 0.1;
 
-        my @distance = grep 
-            { TextNormalizer::levenshtein($_->{normalized_text},  $student_answer->{normalized_text} ) }
-            @{$master};
-
-
+        my @master   = map { $_->{distance} = TextNormalizer::levenshtein_percentage($_->{normalized_text},  $student_answer->{normalized_text} ); $_ } @{$master};
+        my @distance = grep { $_->{distance} <= $THRESHOLD_DISTANCE} @master;
 
         # check if an answer is found
-        if (0 == scalar @filtered){
+        if (0 == scalar @distance){
             return {
                 correct => 0,
                 message => "no answer defined for " . $student_answer->{text}
             };
         }
 
-
         # check if checkbox is equal
-        my $master_answer = $filtered[0];
+        my $master_answer = $distance[0];
         if (lc $master_answer->{checkbox} ne lc $student_answer->{checkbox}){
             return {
                 correct => 0,
@@ -39,10 +35,18 @@ sub _check_answers_checkbox($student_answer, $master){
             };
         }
 
+        # check if distance 
+        if ($master_answer->{distance} > 0){
+            return {
+                correct => 1,
+                message => "success with no total match:\n" . $master_answer->{text} ."\n" . $student_answer->{text},
+            };
+        }
+
         # match was successfull
         return {
             correct => 1,
-            message => 'success'
+            message => "success",
         };
 
 }
@@ -52,11 +56,8 @@ sub _check_answers_checkbox($student_answer, $master){
 
 sub _check_answers($master, $student){
 
-
-
     my @master_answers  = map { $_->{normalized_text} = TextNormalizer::standart_normalize($_->{text}); $_ } @{ $master->{answer}  };
     my @student_answers = map { $_->{normalized_text} = TextNormalizer::standart_normalize($_->{text}); $_ } @{ $student->{answer} };
-    
 
     my @checked_answers = map { _check_answers_checkbox($_, \@master_answers) } @student_answers; 
 

@@ -22,7 +22,7 @@ YYYYMMDD-HHMMSS-<FILENAME>, where <FILENAME> is the name of the original master 
 - [x] Modify your solution to Part 1b of the main task to allow for trivial differences in layout or casing, by “normalizing” each question and each answer before they are compared.
 - [x] Normalization consists of:
     - [x] converting the text to lower-case;
-    - [ ] removing any “stop words” from the text;
+    - [x] removing any “stop words” from the text;
     - [x] removing any sequence of whitespace characters at the start and/or the end of the text;
     - [x] replacing any remaining sequence of whitespace characters within the text
 with a single space character.
@@ -36,7 +36,7 @@ with a single space character.
         "what airspeed fully laden african swallow?"
 
 
-- [ ] Now further modify your solution so that normalized questions and answers in the student’s file are compared against questions and answers in the master file using their “edit-distances”
+- [x] Now further modify your solution so that normalized questions and answers in the student’s file are compared against questions and answers in the master file using their “edit-distances”
 (i.e. their Levenshtein distance or Damerau–Levenshtein distance). You may either write
 your own implementation of this test, or use a module from CPAN.
 
