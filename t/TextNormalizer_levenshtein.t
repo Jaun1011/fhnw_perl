@@ -23,6 +23,9 @@ is TextNormalizer::levenshtein_percentage("asdf","wsdf"),   0.25;
 is TextNormalizer::levenshtein_percentage("asdf","poiu"),   1;
 is TextNormalizer::levenshtein_percentage("asdf","poiuaa"), 1.5;
 is TextNormalizer::levenshtein_percentage("was ist die lösung für den nahost konflikt?","was ist die lösung für din nahost konflikt"), 0.0444444444444444;
+is TextNormalizer::levenshtein_percentage("wus ist die lisung für den nahost konflikt?","was ist die lösung für din nahost konflikt"), 0.113636363636364;
+
+
 
 
 done_testing();

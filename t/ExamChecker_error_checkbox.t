@@ -41,11 +41,11 @@ my $student_exam = {
 
 my @expected = (
     {
-        ansers => [
-            { correct => 0, message => "checkbox does not match" },
-            { correct => 0, message => "checkbox does not match" },
+        answers => [
+            { correct => 0, message => "" },
+            { correct => 0, message => "" },
         ],
-        score  => "",
+        score  => 0,
     },
 );
 

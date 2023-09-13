@@ -5,7 +5,6 @@ use warnings;
 
 
 use lib 'src';
-use Arguments;
 use File;
 use ExamLoader;
 use Shuffle;
@@ -15,8 +14,7 @@ use Data::Show;
 
 sub main(){
     
-	my $arguments = Arguments::load();
-	my $master_file = $arguments->{master};
+	my $master_file = @ARGV[0];
 
 	my $content  = File::read($master_file);
 	my $exam     = ExamLoader::load_exam($content);

@@ -10,45 +10,41 @@ use Data::Show;
 use lib 'src';
 use TextNormalizer;
 
-sub _check_answers_checkbox($student_answer, $master){
+my $THRESHOLD_DISTANCE = 0.1;
+
+sub _check_answers_checkbox($id, $student_answer, $master){
 
 
-        my $THRESHOLD_DISTANCE = 0.1;
+    my @hard_filter = grep {$_->{normalized_text} eq $student_answer->{normalized_text}} @{$master};
 
-        my @master   = map { $_->{distance} = TextNormalizer::levenshtein_percentage($_->{normalized_text},  $student_answer->{normalized_text} ); $_ } @{$master};
-        my @distance = grep { $_->{distance} <= $THRESHOLD_DISTANCE} @master;
+    my @master   = map { $_->{distance} = TextNormalizer::levenshtein_percentage($_->{normalized_text},  $student_answer->{normalized_text} ); $_ } @{$master};
+    my @distance = grep { $_->{distance} <= $THRESHOLD_DISTANCE} @master;
 
-        # check if an answer is found
-        if (0 == scalar @distance){
-            return {
-                correct => 0,
-                message => "no answer defined for " . $student_answer->{text}
-            };
-        }
-
-        # check if checkbox is equal
-        my $master_answer = $distance[0];
-        if (lc $master_answer->{checkbox} ne lc $student_answer->{checkbox}){
-            return {
-                correct => 0,
-                message => "checkbox does not match"
-            };
-        }
-
-        # check if distance 
-        if ($master_answer->{distance} > 0){
-            return {
-                correct => 1,
-                message => "success with no total match:\n" . $master_answer->{text} ."\n" . $student_answer->{text},
-            };
-        }
-
-        # match was successfull
+    # check if an answer is found
+    if (0 == scalar @distance){
         return {
-            correct => 1,
-            message => "success",
+            correct => 0,
+            message => "$id) no answer defined for:\n\t" . $student_answer->{text} ."\n"
         };
+    }
 
+    # check if checkbox is equal
+    my $master_answer = $distance[0];
+    if (lc $master_answer->{checkbox} ne lc $student_answer->{checkbox}){
+        return {
+            correct => 0,
+            message => ""
+        };
+    }
+
+    # match was successfull
+    return {
+        correct => 1,
+        # check if distance 
+        message => $master_answer->{distance} == 0
+            ? ""
+            : "$id) success with no total match:\n\t" . $master_answer->{text} ."\n\t" . $student_answer->{text} . "\n",
+    };
 }
 
 
@@ -59,33 +55,34 @@ sub _check_answers($master, $student){
     my @master_answers  = map { $_->{normalized_text} = TextNormalizer::standart_normalize($_->{text}); $_ } @{ $master->{answer}  };
     my @student_answers = map { $_->{normalized_text} = TextNormalizer::standart_normalize($_->{text}); $_ } @{ $student->{answer} };
 
-    my @checked_answers = map { _check_answers_checkbox($_, \@master_answers) } @student_answers; 
+    my @checked_answers = map { _check_answers_checkbox($master->{question}->{id} ,$_, \@master_answers) } @student_answers; 
 
+
+
+    # sums up all correct answers and compares it to the size of the $master_answer var;
     my $result = 0;
     for my $checked (@checked_answers){
         $result += $checked->{correct};
     }
 
-
     return {
-        score  => $result == scalar @master_answers,
-        ansers => \@checked_answers
+        score  => $result == scalar @master_answers ? 1 : 0,
+        answers => \@checked_answers
     }
-
-
 }
 
 
 sub _check_question_answers($question, $master_questions){
 
-    my @question_by_id = grep { $question->{question}->{id}  == $_->{question}->{id} } @{$master_questions};
+    my $id = $question->{question}->{id}; 
     
+    my @question_by_id = grep { $id == $_->{question}->{id} } @{$master_questions};
 
     # no queston was found
     if (0 == scalar @question_by_id){
         return {
             score  => 0,
-            message => "no question found in master file by id => " . $question->{question}->{id},
+            message => "$id) no question found in master file.\n", 
         };
     }
 
@@ -94,8 +91,7 @@ sub _check_question_answers($question, $master_questions){
     if ($question->{question}->{text} ne $master_question->{question}->{text}){
         return {
             score  => 0,
-            message => "questions are different id => " . $question->{question}->{id},
-            
+            message => "$id) questions are different.\n",
         }
     }
 
@@ -112,3 +108,9 @@ sub check_exam($master, $student){
 
 =head1 Usage
 use in part2
+
+
+=head1 Documenation
+The module is used to check if he exam is correct or not.
+The main subroutine is check_exam.
+As a result it gives back a list of checks against the questions and the answers

@@ -39,11 +39,11 @@ my $student_exam = {
 
 my @expected = (
      {
-        ansers => [
-            { correct => 0, message => "no answer defined for abc 1" },
-            { correct => 1, message => "success" },
+        answers => [
+            { correct => 0, message => "1) no answer defined for:\n\tabc 1\n" },
+            { correct => 1, message => "" },
         ],
-        score  => "",
+        score  => 0,
       },
 );
 

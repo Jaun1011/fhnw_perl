@@ -20,7 +20,7 @@ my $master_exam = {
             question  => { id => 1, text => "question xa" },
             separator => "___",
         }
-     ]
+    ]
 };
 
 
@@ -41,7 +41,10 @@ my $student_exam = {
 
 
 my @expected = (
-    { message => "questions are different id => 1", score => 0 }
+    { 
+        message => "1) questions are different.\n", 
+        score => 0
+    }
 );
 
 my @result = ExamChecker::check_exam($master_exam, $student_exam);

@@ -12,26 +12,57 @@ use File;
 use ExamLoader;
 use Shuffle;
 use ExamChecker;
-
+use Statistic;
 
 
 
 
 sub main(){
 	 
-	my $arguments = Arguments::load();
 	
-	my $master_file = $arguments->{master};
-	my $student_file = $arguments->{target};
-	
+	my $master_file  = $ARGV[0];
+	shift @ARGV;
+
+
 	my $master_content  = File::read($master_file);
 	my $master_exam     = ExamLoader::load_exam($master_content);
 	
-	my $student_content  = File::read($student_file);
-	my $student_exam     = ExamLoader::load_exam($student_content);
+	my @files = @ARGV;	
 	
-	ExamChecker::check_exam($master_exam, $student_exam);
+	my $score_buffer   = "";
+	my $message_buffer = "";
+
+	for my $file (@files){
+		
+		my $student_content  = File::read($file);
+		my $student_exam     = ExamLoader::load_exam($student_content);
+		my @checks           = ExamChecker::check_exam($master_exam, $student_exam);
+	
+		$score_buffer .= $file. "\t" . Statistic::sum(\@checks, "score") . "/". scalar @checks. "\n";
+	
+		$message_buffer .= "\n------------------" .$file . "------------------------\n";
+		for (@checks){
+			for($_->{answers}){
+				for(@{$_}){
+					if ($_->{message}){
+						$message_buffer .= $_->{message} ."\n";
+					}
+				}
+			}
+		}
+
+
+	}
+
+	say "[scores]";
+	say $score_buffer;
+
+	say "[messages]";
+	say $message_buffer;
+
 
 }
+
+
 
 main()

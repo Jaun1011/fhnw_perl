@@ -41,11 +41,11 @@ with a single space character.
 your own implementation of this test, or use a module from CPAN.
 
 
-- [ ] Your edit-distance test must accept a match between two normalized strings only if their
+- [x] Your edit-distance test must accept a match between two normalized strings only if their
 edit-distance is no more than 10% the length of the normalized original string
 (i.e. 10% of the length of the normalized string from the examination master file).
 
-- [ ] Your modifier program should report each case in which it accepts an inexact match between questions or answers. 
+- [x] Your modifier program should report each case in which it accepts an inexact match between questions or answers. 
     For example:
         
         exam1/student_000001.txt:

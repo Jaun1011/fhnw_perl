@@ -14,7 +14,7 @@ my $master_exam = {
     question_answers => [
         {
             answer    => [
-                { checkbox => "[x]", text => "was ist die lösung für den nahost konflikt?" },
+                { checkbox => "[x]", text => "was ust die lösung für den nahost konflikt?" },
                 { checkbox => "[ ]", text => "abc 2" },
             ],
             question  => { id => 1, text => "question x" },
@@ -29,7 +29,7 @@ my $student_exam = {
         # question correct
         {
             answer    => [
-                { checkbox => "[x]", text => "was ist die lösung für din nahost konflikt?" },
+                { checkbox => "[x]", text => "wus ist die lisung für den nahost konflikt?" },
                 { checkbox => "[ ]", text => "abc 2" },
             ],
             question  => { id => 1, text => "question x" },
@@ -40,19 +40,16 @@ my $student_exam = {
 
 
 my @expected = (
-    {
+      {
         answers => [
             {
-                correct => 1,
-                message => "1) success with no total match:\n\twas ist die l\xC3\xB6sung f\xC3\xBCr den nahost konflikt?\n\twas ist die l\xC3\xB6sung f\xC3\xBCr din nahost konflikt?\n",
+                correct => 0,
+                message => "1) no answer defined for:\n\twus ist die lisung f\xC3\xBCr den nahost konflikt?\n",
             },
-            { 
-                correct => 1, 
-                message => ""
-            },
+            { correct => 1, message => "" },
         ],
-        score  => 1,
-    }, 
+        score  => 0,
+      },
 );
 
 my @result = ExamChecker::check_exam($master_exam, $student_exam);

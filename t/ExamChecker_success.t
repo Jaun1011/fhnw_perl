@@ -42,9 +42,9 @@ my $student_exam = {
 
 my @expected = (
     {
-        ansers => [
-            { correct => 1, message => "success" },
-            { correct => 1, message => "success" },
+        answers => [
+            { correct => 1, message => "" },
+            { correct => 1, message => "" },
         ],
         score => 1,
     },

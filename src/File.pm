@@ -13,11 +13,11 @@ sub write($content, $filename){
     print $fh $content;
     close($fh);
     
-    say "write to file $filename";
+    # say "[info] write to file $filename";
 }
 
 sub read($filename){
-    say "read file $filename";
+    # say "[info] read file $filename";
     open my $fh, '<', $filename or return undef;
     local $/;
 
