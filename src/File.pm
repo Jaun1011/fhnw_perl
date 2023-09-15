@@ -20,7 +20,6 @@ sub read($filename){
     # say "[info] read file $filename";
     open my $fh, '<', $filename or return undef;
     local $/;
-
     return readline($fh);
 }
 
@@ -32,6 +31,7 @@ sub generate_filename($filepath,){
 	my $time   = strftime("%Y%m%d-%H%M%S", localtime()); 
 	my $file   = $time. "-" . $filename;
 	my $target = $dirs . $file;
+    
     return $target;
 }
 

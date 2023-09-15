@@ -7,7 +7,6 @@ use warnings;
 use Data::Show;
 
 use lib 'src';
-use Arguments;
 use File;
 use ExamLoader;
 use Shuffle;
@@ -38,7 +37,7 @@ sub main(){
 		my $student_exam     = ExamLoader::load_exam($student_content);
 		my @checks           = ExamChecker::check_exam($master_exam, $student_exam);
 	
-		$score_buffer .= $file. "\t" . Statistic::sum(\@checks, "score") . "/". scalar @checks. "\n";
+		$score_buffer .= $file. "\t" . Statistic::sum( map {$_->{score}}@checks) . "/". scalar @checks. "\n";
 	
 		$message_buffer .= "\n------------------" .$file . "------------------------\n";
 		for (@checks){

@@ -64,3 +64,6 @@ sub convert_exam_to_string($exam){
 	return $result;
 }
 1;
+
+=head1 Intro
+The converter module converts exam datastructures to a string which can later be written into a file.
