@@ -49,14 +49,11 @@ sub main(){
 		
 		my $student_content  = File::read($file);
 
-		say "file loaded";
 		my $student_exam     = ExamLoader::load_exam($student_content);
 		
-		say "file parsed";
 		my @checks           = ExamChecker::check_exam($master_exam, $student_exam);
 
 
-		say "file checked";
 		$score_buffer       .= $file. "\t" . Statistic::sum( map {$_->{score}}@checks) . "/". scalar @checks. "\n";
 		$message_buffer     .= read_messages($file, @checks);
 	}

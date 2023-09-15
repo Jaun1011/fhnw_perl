@@ -18,7 +18,7 @@ sub main(){
 
 	my $content  = File::read($master_file);
 	my $exam     = ExamLoader::load_exam($content);
-	my $seed = int(rand(1000000));
+	my $seed     = int(rand(1000000));
     Shuffle::shuffle_answers($exam, $seed);
 	
 	my $target = File::generate_filename($master_file);

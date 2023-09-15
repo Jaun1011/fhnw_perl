@@ -71,7 +71,7 @@ sub max(@items){
 }
 
 
-sub average(@items) {
+sub mean(@items) {
     # no divisor through zero
     if (scalar @items == 0 ) { return undef; }
 
@@ -79,15 +79,12 @@ sub average(@items) {
 }
 
 
-sub analyse(@items){
-    return {
-        median => median (@items),
-        average=> average(@items),
-        max    => max    (@items),
-        min    => min    (@items),
-    }
-}
+sub standard_deviation(@items){
+    my $mean = mean(@items);
+    my $s = sum ( map {($_ - $mean)**2} @items );
 
+    return sqrt($s / scalar @items);
+}
 
 
 sub count_items(@items){
@@ -97,6 +94,18 @@ sub count_items(@items){
     }
     return $counter;
 }
+
+sub analyse(@items){
+    return {
+        median => median(@items),
+        mean   => mean(@items),
+        max    => max(@items),
+        min    => min(@items),
+        std    => standard_deviation(@items),
+    }
+}
+
+
 
 1;
 =head1 Usage

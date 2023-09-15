@@ -67,4 +67,7 @@ There are several messages the ExamChecker.pm Module is going to print.
 The most important cases are documenated in the tests under `t/ExamChecker_*`. 
 
 
+The Threshold by 10 percent is too high. There are  questions which match but shouldnt
+
+
 ## 

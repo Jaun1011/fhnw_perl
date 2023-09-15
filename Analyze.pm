@@ -47,40 +47,71 @@ sub main(){
 
 
 
+	my %checks = ();
 
-	my @checks = ();
-	for my $exam (@exams){
 
-		push @checks, ExamChecker::check_exam($master_exam, $exam->{exam});
+	my $answers = ();
+	my $scores_file = ();
+	for (@exams){
+
+		my $file = $_->{file};
+		my @checks = ExamChecker::check_exam($master_exam, $_->{exam});
+
+		for my $check (@checks){
+			$answers->{$check->{id}}->{answered} += 1;
+			$answers->{$check->{id}}->{correct}  += $check->{score};
+			$scores_file->{$file} += $check->{score};
+		}
 	}
- 
 
-	
 
-	my %answers = ();
-	for my $check (@checks){
-		my $id = $check->{id};
-		
-		$answers{$id}{answered}  += 1;
-		$answers{$id}{correct}   += $check->{score};
-		$answers{$id}{wrong}     += 1 if $check->{score} == 0;
+	show($answers);
+	show($scores_file);
+
+	my @scores    = map { {file => $_, score => $scores_file->{$_}} } keys %{$scores_file};
+
+	my $statistic = Statistic::analyse(sort map {$_->{score}} @scores);
+
+
+	show($statistic);
+
+
+	my $max_score =  scalar @{$master_exam->{question_answers}};
+
+
+	# under 50%
+	my @max_score_filtered =  grep { $_->{score} < $max_score / 2 } @scores;
+	say join "\n", map { "[score < 50%]\t". $_->{file} . "\t".$_->{score} ."/" . $max_score } @max_score_filtered;
+
+
+
+
+	# the last 25 percent over all
+	my @max_score_filtered =  grep { $_->{score} < $max_score / 2 } @scores;
+	my @under_cohort       =  sort { $a->{score} > $b->{score}  } @scores;
+
+	for my $i (0..scalar int(@under_cohort /4)){
+		say "[bottom 25% of cohort]\t" . @under_cohort[$i]->{file} . "\t".$under_cohort[$i]->{score} . "/" . $max_score ;
 	}
-	
-
-
-	my @scores = map { Statistic::sum( map { $_->{score} } $_) } @checks;
-	
-
-	my $score_analysis = Statistic::analyse(@scores);
-
-	show($score_analysis);
 
 
 
+	# under the standard derivation
+	my @max_score_filtered =  grep { $_->{score} < $statistic->{mean} - $statistic->{std} } @scores;
+	my @std_under =  sort { $a->{score} > $b->{score}  } @scores;
 
 
+	say join "\n", map { "[score > 1σ below mean]\t". $_->{file} . "\t".$_->{score} ."/" . $max_score } @std_under;
 
+
+	# all 
 }
+
+
+
+
+
+
 
 
 

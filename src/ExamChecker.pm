@@ -9,7 +9,10 @@ use Data::Show;
 use lib 'src';
 use TextNormalizer;
 
-my $THRESHOLD_DISTANCE = 0.1;
+
+
+# the choosen threshold is by 10%. for smaller texts the theshold should maybe be higher
+my $THRESHOLD_DISTANCE = 0.05;
 
 sub _check_answers_checkbox($id, $student_answer, $master){
 
