@@ -15,6 +15,8 @@ sub _check_answers_checkbox($id, $student_answer, $master){
 
     my @hard_filter = grep {$_->{normalized_text} eq $student_answer->{normalized_text}} @{$master};
 
+
+    # the levenshtein distance takes quite some time
     my @master      = map { $_->{distance} = TextNormalizer::levenshtein_percentage($_->{normalized_text},  $student_answer->{normalized_text} ); $_ } @{$master};
     my @distance    = grep { $_->{distance} <= $THRESHOLD_DISTANCE} @master;
 
@@ -50,9 +52,10 @@ sub _check_answers_checkbox($id, $student_answer, $master){
 
 sub _check_answers($master, $student){
     my $id = $master->{question}->{id} ;
-
+    
     my @master_answers  = map { $_->{normalized_text} = TextNormalizer::standart_normalize($_->{text}); $_ } @{ $master->{answer}  };
     my @student_answers = map { $_->{normalized_text} = TextNormalizer::standart_normalize($_->{text}); $_ } @{ $student->{answer} };
+
 
     my @checked_answers = map { _check_answers_checkbox($id, $_, \@master_answers) } @student_answers; 
 

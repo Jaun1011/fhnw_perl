@@ -28,9 +28,8 @@ sub shuffle_answers($exam, $seed){
 }
 1;
 
-
 =head1 Usage
-used for part1 
+Used for part1 
 
 
 =head1 Description

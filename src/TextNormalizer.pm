@@ -91,3 +91,14 @@ used in part 2
 
 =head1 Description
 Provides subroutines for calculating the levenshtein distance by percentage and nomalizing text.
+The Levenshtein distance is performance intensive
+
+=head2 Approximation Levenshtein
+
+The Levenshtein distance between two strings of length n can be approximated to within a factor
+
+    ( log ⁡ n ) O ( 1 / ε ) , {\displaystyle (\log n)^{O(1/\varepsilon )},}
+
+where ε > 0 is a free parameter to be tuned, in time O(n1 + ε).
+
+see (https://en.wikipedia.org/wiki/Levenshtein_distance)

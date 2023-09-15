@@ -89,7 +89,19 @@ sub analyse(@items){
 }
 
 
-1;
 
+sub count_items(@items){
+    my $counter = ();
+    for(@items){
+        $counter->{$_} += 1;
+    }
+    return $counter;
+}
+
+1;
 =head1 Usage
 used in part 3
+
+
+=head1 Description
+The module provides basic statistic functions like sum, min, max median average...
