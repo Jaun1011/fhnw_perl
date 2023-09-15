@@ -3,7 +3,8 @@ package Converter;
 use v5.36;
 use strict;
 use warnings;
-use Data::Dumper;
+
+
 use Data::Show;
 
 
@@ -65,5 +66,8 @@ sub convert_exam_to_string($exam){
 }
 1;
 
-=head1 Intro
+=head1 Usage
+used in part 1
+
+=head1 Description
 The converter module converts exam datastructures to a string which can later be written into a file.

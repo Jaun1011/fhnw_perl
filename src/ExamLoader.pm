@@ -88,3 +88,8 @@ sub load_exam($file_contents) {
 }
 
 1;
+=head1 Usage
+Used in every part
+
+=head1 Description
+The module parses out of the string of a textfile a exam hash. 

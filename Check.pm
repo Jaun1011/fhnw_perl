@@ -14,7 +14,21 @@ use ExamChecker;
 use Statistic;
 
 
+sub read_messages($file, @checks){
+	my $message_buffer = "\n------------------" .$file . "------------------------\n";
+	
+	for (@checks){
+		for($_->{answers}){
+			for(@{$_}){
+				if ($_->{message}){
+					$message_buffer .= $_->{message} ."\n";
+				}
+			}
+		}
+	}
+	return $message_buffer;
 
+}
 
 sub main(){
 	 
@@ -34,23 +48,17 @@ sub main(){
 	for my $file (@files){
 		
 		my $student_content  = File::read($file);
+
+		say "file loaded";
 		my $student_exam     = ExamLoader::load_exam($student_content);
+		
+		say "file parsed";
 		my @checks           = ExamChecker::check_exam($master_exam, $student_exam);
-	
-		$score_buffer .= $file. "\t" . Statistic::sum( map {$_->{score}}@checks) . "/". scalar @checks. "\n";
-	
-		$message_buffer .= "\n------------------" .$file . "------------------------\n";
-		for (@checks){
-			for($_->{answers}){
-				for(@{$_}){
-					if ($_->{message}){
-						$message_buffer .= $_->{message} ."\n";
-					}
-				}
-			}
-		}
 
 
+		say "file checked";
+		$score_buffer       .= $file. "\t" . Statistic::sum( map {$_->{score}}@checks) . "/". scalar @checks. "\n";
+		$message_buffer     .= read_messages($file, @checks);
 	}
 
 	say "[scores]";

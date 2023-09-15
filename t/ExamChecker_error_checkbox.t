@@ -45,6 +45,7 @@ my @expected = (
             { correct => 0, message => "" },
             { correct => 0, message => "" },
         ],
+        id     => 1,
         score  => 0,
     },
 );

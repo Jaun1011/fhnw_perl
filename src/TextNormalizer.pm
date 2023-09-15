@@ -4,11 +4,21 @@ use v5.36;
 use strict;
 use warnings;
 
-use Data::Dumper;
 use Data::Show;
 
 
-
+#######################################################
+# description:
+#       The text is normalized by:
+#           - lowercase the chars, 
+#           - removing defined keywords 
+#           - remove muliple whitespaces
+#
+# params: 
+#      $text => the text which to normalize 
+# return:
+#       normalized text
+#######################################################
 sub standart_normalize($text){
 
     # lowercase 
@@ -42,7 +52,7 @@ sub levenshtein_percentage($s1, $s2){
     return $distance / $len1;
 }
 
-
+# calculates the levenshtein distance of two strings
 sub _levenshtein($s1, $s2) {
     my ($len1, $len2) = (length $s1, length $s2);
 
@@ -74,3 +84,10 @@ sub _min(@values) {
     return $min;
 }
 1;
+
+=head1 Usage
+used in part 2
+
+
+=head1 Description
+Provides subroutines for calculating the levenshtein distance by percentage and nomalizing text.

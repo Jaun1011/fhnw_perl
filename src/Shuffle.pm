@@ -4,7 +4,6 @@ use v5.36;
 use strict;
 use warnings;
 
-use Data::Dumper;
 use Data::Show;
 
 # Fisher-Yates algorythm 
@@ -32,4 +31,9 @@ sub shuffle_answers($exam, $seed){
 
 =head1 Usage
 used for part1 
+
+
+=head1 Description
+Shuffles the answers of an exam hash.
+The shuffling is done on the reference
 

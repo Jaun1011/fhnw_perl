@@ -43,7 +43,8 @@ my $student_exam = {
 my @expected = (
     { 
         message => "1) questions are different.\n", 
-        score => 0
+        id      => 1,
+        score   => 0
     }
 );
 

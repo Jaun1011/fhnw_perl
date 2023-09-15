@@ -4,7 +4,6 @@ use v5.36;
 use strict;
 use warnings;
 
-use Data::Dumper;
 use Data::Show;
 
 sub median(@items){
@@ -70,4 +69,27 @@ sub max(@items){
 
     return $max;
 }
+
+
+sub average(@items) {
+    # no divisor through zero
+    if (scalar @items == 0 ) { return undef; }
+
+    return sum(@items) / scalar @items;     
+}
+
+
+sub analyse(@items){
+    return {
+        median => median (@items),
+        average=> average(@items),
+        max    => max    (@items),
+        min    => min    (@items),
+    }
+}
+
+
 1;
+
+=head1 Usage
+used in part 3

@@ -43,6 +43,7 @@ my @expected = (
             { correct => 0, message => "1) no answer defined for:\n\tabc 1\n" },
             { correct => 1, message => "" },
         ],
+        id     => 1,
         score  => 0,
       },
 );

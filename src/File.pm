@@ -37,4 +37,7 @@ sub generate_filename($filepath,){
 
 1;
 =head1 Usage
-used in part 1, part 2
+used in every part
+
+=head1 Description
+The module provides a read, write subroutine for fileaccess and generate filename subroutine .
